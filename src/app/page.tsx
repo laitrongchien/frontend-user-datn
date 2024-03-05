@@ -4,8 +4,10 @@ import TourSwiper from "@/components/swiper/TourSwiper";
 import Welcome from "@/components/global/Welcome";
 import Image from "next/image";
 import DestinationSwiper from "@/components/swiper/DestinationSwiper";
+import { tourService } from "@/services/api/tour";
 
-export default function Home() {
+export default async function Home() {
+  const popularTours = await (await tourService.getPopularTours()).data;
   return (
     <>
       <ImageSwiper />
@@ -59,7 +61,7 @@ export default function Home() {
           <h1 className="text-4xl font-semibold mb-6 font-sans text-center text-gray-900">
             TOUR PHỔ BIẾN
           </h1>
-          <TourSwiper images={[1, 2, 3, 4, 5, 6]} />
+          <TourSwiper tours={popularTours} />
           <div className="flex-center mt-6">
             <Link
               href={"/"}

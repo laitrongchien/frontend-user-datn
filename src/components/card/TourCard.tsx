@@ -4,17 +4,17 @@ import Image from "next/image";
 import { FaHeart } from "react-icons/fa";
 import { useState } from "react";
 
-const TourCard = () => {
+const TourCard = ({ tour }: { tour: any }) => {
   const [isFavorited, setIsFavorited] = useState(false);
   return (
     <div className="rounded-lg shadow-md overflow-hidden cursor-pointer border border-gray-300">
       <div className="relative">
         <Image
-          src="/img-1.webp"
+          src={tour.imageCover}
           alt="img1"
           width={768}
           height={375}
-          className="w-full object-cover lg:h-56"
+          className="w-full object-cover lg:h-56 sm:h-64 max-sm:h-96"
         />
         <FaHeart
           size={22}
@@ -28,11 +28,13 @@ const TourCard = () => {
           $2000
         </p>
         <h1 className="font-semibold py-1 border-b border-gray-300">
-          Experience Authentic Vietnam By Motorbikes - 12 Days
+          {tour.name}
         </h1>
         <div className="mt-2">
-          <p>Thời gian: 10 ngày</p>
-          <p>Lộ trình: Hà Nội - Ninh Bình</p>
+          <p>
+            Thời gian: {tour.duration} ngày / {tour.duration - 1} đêm
+          </p>
+          <p>Điểm xuất phát: {tour.startLocation}</p>
         </div>
       </div>
     </div>

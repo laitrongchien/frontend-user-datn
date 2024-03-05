@@ -5,7 +5,7 @@ import "swiper/css";
 import TourCard from "../card/TourCard";
 import SwiperNavButton from "./SwiperNavButton";
 
-const TourSwiper = ({ images }: { images: any[] }) => {
+const TourSwiper = ({ tours }: { tours: any[] }) => {
   return (
     <div>
       <Swiper
@@ -14,7 +14,7 @@ const TourSwiper = ({ images }: { images: any[] }) => {
         modules={[]}
         className="relative"
         breakpoints={{
-          768: {
+          640: {
             slidesPerView: 2,
           },
           1024: {
@@ -22,9 +22,9 @@ const TourSwiper = ({ images }: { images: any[] }) => {
           },
         }}
       >
-        {images.map((image: number, index: number) => (
+        {tours.map((tour: any, index: number) => (
           <SwiperSlide key={index}>
-            <TourCard />
+            <TourCard tour={tour} />
           </SwiperSlide>
         ))}
         <SwiperNavButton />

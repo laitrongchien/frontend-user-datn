@@ -29,13 +29,18 @@ const Sidebar = () => {
             <p className="ml-6">Đổi mật khẩu</p>
           </Link>
         </li>
+        <li className="p-1.5 hover:bg-gray-100 rounded-md flex items-center">
+          <FaRegHeart />
+          <p className="ml-2">Yêu thích</p>
+        </li>
         <li className="p-1.5 hover:bg-gray-100 rounded-md">
-          <Link
-            href={"/profile/favorite-tours"}
-            className="flex items-center w-full"
-          >
-            <FaRegHeart />
-            <p className="ml-2">Yêu thích</p>
+          <Link href={"/profile/info"} className="flex items-center w-full">
+            <p className="ml-6">Tour xe motor</p>
+          </Link>
+        </li>
+        <li className="p-1.5 hover:bg-gray-100 rounded-md">
+          <Link href={"/profile/info"} className="flex items-center w-full">
+            <p className="ml-6">Xe motor</p>
           </Link>
         </li>
         {/* <li className="p-1.5 hover:bg-gray-100 rounded-md">
