@@ -5,9 +5,10 @@ import Image from "next/image";
 import { useRouter, usePathname } from "next/navigation";
 import { useAppSelector, useAppDispatch } from "@/store/hooks";
 import { FaChevronDown, FaRegHeart } from "react-icons/fa";
-import { LuUser, LuLogOut, LuBell, LuStar, LuMenu } from "react-icons/lu";
+import { LuUser, LuLogOut, LuBell, LuStar } from "react-icons/lu";
 import { useState } from "react";
 import { logout } from "@/store/features/authSlice";
+import Drawer from "./Drawer";
 
 const Navbar = () => {
   const router = useRouter();
@@ -32,34 +33,7 @@ const Navbar = () => {
         <Link href={"/"} className="max-lg:hidden">
           <Image src="/logo.png" alt="logo" width={237} height={27} />
         </Link>
-        <div>
-          <input id="my-drawer" type="checkbox" className="drawer-toggle" />
-          <div className="drawer-content">
-            <label
-              htmlFor="my-drawer"
-              className="drawer-button lg:hidden cursor-pointer"
-            >
-              <LuMenu size={30} />
-            </label>
-          </div>
-          <div className="drawer-side">
-            <label
-              htmlFor="my-drawer"
-              aria-label="close sidebar"
-              className="drawer-overlay"
-            ></label>
-            <ul className="p-4 w-60 min-h-full bg-base-200 text-base-content">
-              <li>
-                <label htmlFor="my-drawer">
-                  <a>Sidebar Item 1</a>
-                </label>
-              </li>
-              <li>
-                <a>Sidebar Item 2</a>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <Drawer />
       </div>
       <ul className="flex items-center justify-between text-gray-700 font-semibold basis-1/2 max-lg:hidden">
         <li className={`nav-item ${pathname === "/" ? "active" : ""}`}>
