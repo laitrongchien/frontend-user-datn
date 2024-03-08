@@ -25,7 +25,7 @@ const Welcome = () => {
         <div className="flex">
           <div>
             <p>Tour du lịch</p>
-            <p className="font-sans text-4xl mt-4 font-semibold">100+</p>
+            <p className="font-sans text-4xl mt-4 font-semibold">20+</p>
           </div>
           <div className="ml-8">
             <p>Phượt thủ</p>

@@ -28,7 +28,7 @@ const ImageSwiper = () => {
             src={img1}
             alt="img1"
             sizes="100vw"
-            className="w-full lg:h-[calc(100vh-74px)] object-cover"
+            className="w-full lg:h-[calc(100vh-100px)] object-cover"
           />
         </SwiperSlide>
         <SwiperSlide>

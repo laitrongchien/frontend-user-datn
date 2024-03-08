@@ -33,7 +33,7 @@ export default function RootLayout({
           <GoogleOAuthProvider clientId={process.env.GOOGLE_CLIENT_ID || ""}>
             <Navbar />
             <ToastProvider>
-              <main className="mt-[74px]">{children}</main>
+              <main className="mt-[66px]">{children}</main>
             </ToastProvider>
           </GoogleOAuthProvider>
         </AppProvider>

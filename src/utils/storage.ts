@@ -5,15 +5,16 @@ export const getLocalAccessToken = () => {
   }
 };
 
-export const setUser = (user: any) => {
+export const getLocalRefreshToken = () => {
   if (typeof window !== "undefined") {
-    localStorage.setItem("user", JSON.stringify(user));
+    const user = JSON.parse(localStorage.getItem("user") as string);
+    return user?.refresh_token;
   }
 };
 
-export const getUser = () => {
+export const setUser = (user: any) => {
   if (typeof window !== "undefined") {
-    return JSON.parse(localStorage.getItem("user") as string);
+    localStorage.setItem("user", JSON.stringify(user));
   }
 };
 

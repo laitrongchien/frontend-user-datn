@@ -2,10 +2,10 @@
 
 import Image from "next/image";
 import { FaHeart } from "react-icons/fa";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { tourService } from "@/services/api/tour";
 
 const TourCard = ({ tour }: { tour: any }) => {
-  const [isFavorited, setIsFavorited] = useState(false);
   return (
     <div className="rounded-lg shadow-md overflow-hidden cursor-pointer border border-gray-300">
       <div className="relative">
@@ -15,12 +15,6 @@ const TourCard = ({ tour }: { tour: any }) => {
           width={768}
           height={375}
           className="w-full object-cover lg:h-56 sm:h-64 max-sm:h-96"
-        />
-        <FaHeart
-          size={22}
-          color={isFavorited ? "#f96515" : "#666"}
-          className="absolute top-3 right-3"
-          onClick={() => setIsFavorited(!isFavorited)}
         />
       </div>
       <div className="p-2">

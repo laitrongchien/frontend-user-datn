@@ -1,16 +1,30 @@
-import ImageSwiper from "@/components/swiper/ImageSwiper";
 import Link from "next/link";
 import TourSwiper from "@/components/swiper/TourSwiper";
 import Welcome from "@/components/global/Welcome";
 import Image from "next/image";
 import DestinationSwiper from "@/components/swiper/DestinationSwiper";
 import { tourService } from "@/services/api/tour";
+import imgCover from "../../public/img-1.webp";
 
 export default async function Home() {
+  // const [popularTours, setPopularTours] = useState([]);
+  // useEffect(() => {
+  //   const getPopularTours = async () => {
+  //     const popularTours = await tourService.getPopularTours();
+  //     setPopularTours(popularTours.data);
+  //   };
+  //   getPopularTours();
+  // }, []);
   const popularTours = await (await tourService.getPopularTours()).data;
+
   return (
     <>
-      <ImageSwiper />
+      <Image
+        src={imgCover}
+        alt="imgCover"
+        sizes="100vw"
+        className="w-full lg:h-[calc(100vh-128px)] max-sm:h-[400px] object-cover"
+      />
       <Welcome />
       <div className="p-10">
         <div className="overflow-hidden mb-16 relative rounded-xl mt-6">

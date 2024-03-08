@@ -2,7 +2,7 @@ const Motorbike = () => {
   return (
     <div className="h-[1000px] ">
       <div
-        className="relative bg-center bg-cover w-full h-[calc(100vh-74px)] p-6 flex flex-col justify-center"
+        className="relative bg-center bg-cover w-full h-[calc(100vh-66px)] p-6 flex flex-col justify-center"
         style={{
           backgroundImage: `url("https://rentabikevn.com/wp-content/uploads/2023/03/Rentabike-Vietnam-Honda-CB500x-Front-left-2048x1153.jpg")`,
           backgroundAttachment: "fixed",

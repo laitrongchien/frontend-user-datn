@@ -1,4 +1,5 @@
 import axios from "./axios";
+import { getLocalRefreshToken, setUser } from "@/utils/storage";
 
 const register = async (formData: any) => {
   try {
@@ -21,4 +22,21 @@ const logout = async () => {
   return await axios.get("/auth/logout");
 };
 
-export const authService = { register, login, logout, googleLogin };
+const refreshToken = async () => {
+  try {
+    const res = await axios.get("/auth/refresh_token");
+    console.log(res);
+    setUser(res.data);
+    return res.data.access_token;
+  } catch (err) {
+    console.error("Error refreshing token:", err);
+  }
+};
+
+export const authService = {
+  register,
+  login,
+  logout,
+  googleLogin,
+  refreshToken,
+};
