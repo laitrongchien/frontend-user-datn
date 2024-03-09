@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { FaRegHeart } from "react-icons/fa";
-import { LuUser, LuStar } from "react-icons/lu";
+import { LuUser, LuStar, LuTicket } from "react-icons/lu";
 import { usePathname } from "next/navigation";
 
 const Sidebar = () => {
@@ -18,15 +18,10 @@ const Sidebar = () => {
           <Link
             href={"/profile/info"}
             className={`flex items-center w-full ${
-              pathname === "/profile/info" ? "text-primary" : ""
+              pathname === "/profile/info" ? "text-primary font-semibold" : ""
             }`}
           >
             <p className="ml-6">Thông tin cá nhân</p>
-          </Link>
-        </li>
-        <li className="p-1.5 hover:bg-gray-100 rounded-md">
-          <Link href={"/profile/info"} className="flex items-center w-full">
-            <p className="ml-6">Đổi mật khẩu</p>
           </Link>
         </li>
         <li className="p-1.5 hover:bg-gray-100 rounded-md flex items-center">
@@ -34,13 +29,34 @@ const Sidebar = () => {
           <p className="ml-2">Yêu thích</p>
         </li>
         <li className="p-1.5 hover:bg-gray-100 rounded-md">
-          <Link href={"/profile/info"} className="flex items-center w-full">
+          <Link
+            href={"/profile/favorite-tours"}
+            className={`flex items-center w-full ${
+              pathname === "/profile/favorite-tours"
+                ? "text-primary font-semibold"
+                : ""
+            }`}
+          >
             <p className="ml-6">Tour xe motor</p>
           </Link>
         </li>
         <li className="p-1.5 hover:bg-gray-100 rounded-md">
           <Link href={"/profile/info"} className="flex items-center w-full">
             <p className="ml-6">Xe motor</p>
+          </Link>
+        </li>
+        <li className="p-1.5 hover:bg-gray-100 rounded-md flex items-center">
+          <LuTicket />
+          <p className="ml-2">Đơn đặt</p>
+        </li>
+        <li className="p-1.5 hover:bg-gray-100 rounded-md">
+          <Link href={"/profile/info"} className="flex items-center w-full">
+            <p className="ml-6">Tour đã đặt</p>
+          </Link>
+        </li>
+        <li className="p-1.5 hover:bg-gray-100 rounded-md">
+          <Link href={"/profile/info"} className="flex items-center w-full">
+            <p className="ml-6">Xe motor đã thuê</p>
           </Link>
         </li>
         {/* <li className="p-1.5 hover:bg-gray-100 rounded-md">

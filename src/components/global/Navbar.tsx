@@ -28,7 +28,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="w-full bg-white fixed top-0 left-0 z-50 border-b border-slate-300 px-10 py-3 flex justify-between">
+    <nav className="w-[calc(100vw-6px)] bg-white fixed top-0 left-0 z-50 border-b border-slate-300 px-10 py-3 flex justify-between">
       <div className="basis-1/4 flex items-center">
         <Link href={"/"} className="max-lg:hidden">
           <Image src="/logo.png" alt="logo" width={237} height={27} />

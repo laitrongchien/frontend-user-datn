@@ -23,3 +23,9 @@ export const removeUser = () => {
     localStorage.removeItem("user");
   }
 };
+
+export const clear = () => {
+  if (typeof window !== "undefined") {
+    localStorage.clear();
+  }
+};

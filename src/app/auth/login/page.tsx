@@ -9,6 +9,7 @@ import { login } from "@/store/features/authSlice";
 import { useAppDispatch } from "@/store/hooks";
 import { useAppSelector } from "@/store/hooks";
 import SocialLogin from "@/components/auth/SocialLogin";
+import { TailSpin } from "react-loader-spinner";
 
 const Login = () => {
   const dispatch = useAppDispatch();
@@ -19,10 +20,13 @@ const Login = () => {
   });
   const [passwordShown, setPasswordShown] = useState(false);
   const { user } = useAppSelector((state) => state.auth);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(login(formData));
+    setLoading(true);
+    await dispatch(login(formData));
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -91,9 +95,22 @@ const Login = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-primary hover:bg-orange-600 text-white py-2 rounded-lg mb-4"
+            className="w-full bg-primary hover:bg-orange-600 text-white py-2 rounded-lg mb-4 flex-center"
           >
-            Đăng nhập
+            {loading ? (
+              <TailSpin
+                height="20"
+                width="20"
+                color="white"
+                ariaLabel="tail-spin-loading"
+                radius="1"
+                wrapperStyle={{}}
+                wrapperClass=""
+                visible={true}
+              />
+            ) : (
+              "Đăng nhập"
+            )}
           </button>
           <Link href={"/auth/reset"}>
             <p className="text-center text-primary font-semibold mb-4">

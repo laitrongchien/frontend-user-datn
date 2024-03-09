@@ -116,6 +116,11 @@ const authSlice = createSlice({
       state.error = null;
       state.user = null;
     });
+    builder.addCase(logout.rejected, (state, action) => {
+      state.isAuthenticated = false;
+      state.error = action.payload;
+      state.user = null;
+    });
     builder.addCase(updateProfile.pending, (state) => {
       state.loading = true;
       state.error = null;

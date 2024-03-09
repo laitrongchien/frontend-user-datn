@@ -10,11 +10,22 @@ import {
   LuStar,
 } from "react-icons/lu";
 import Link from "next/link";
+import { tourService } from "@/services/api/tour";
 
-const HorizTourCard = ({ tour }: { tour: any }) => {
-  const [isFavorited, setIsFavorited] = useState(false);
+const HorizTourCard = ({
+  tour,
+  hideHeartIcon,
+}: {
+  tour: any;
+  hideHeartIcon: boolean;
+}) => {
+  const [isFavorited, setIsFavorited] = useState(tour.isFavorite);
+  const handleLikeTour = async () => {
+    setIsFavorited(!isFavorited);
+    await tourService.likeTour(tour._id);
+  };
   return (
-    <div className="flex justify-between mt-20 max-md:flex-col basis-[48%] max-md:basis-[100%]">
+    <div className="flex justify-between max-md:flex-col">
       <div className="relative">
         <Image
           src={tour.imageCover}
@@ -23,12 +34,14 @@ const HorizTourCard = ({ tour }: { tour: any }) => {
           height={375}
           className="w-60 h-60 object-cover rounded-lg max-md:w-full max-md:h-auto"
         />
-        <FaHeart
-          size={22}
-          color={isFavorited ? "#f96515" : "#666"}
-          className="absolute top-3 right-3"
-          onClick={() => setIsFavorited(!isFavorited)}
-        />
+        {!hideHeartIcon && (
+          <FaHeart
+            size={22}
+            color={isFavorited ? "#f96515" : "#666"}
+            className="absolute top-3 right-3 cursor-pointer"
+            onClick={handleLikeTour}
+          />
+        )}
       </div>
       <div className="md:px-6 flex flex-col justify-between flex-1">
         <h1 className="font-semibold max-md:mt-4">{tour.name}</h1>
