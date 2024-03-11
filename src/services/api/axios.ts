@@ -42,11 +42,14 @@ instance.interceptors.response.use(
         try {
           const access_token = await authService.refreshToken();
           originalRequest.headers.Authorization = `Bearer ${access_token}`;
-          return axios(originalRequest);
+          return instance(originalRequest);
         } catch (error) {
           console.error("Error refreshing token:", error);
           throw error;
         }
+      }
+      if (error.response.status === 403 && error.response.data) {
+        return Promise.reject(error.response.data);
       }
     }
 

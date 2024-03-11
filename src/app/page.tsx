@@ -1,31 +1,26 @@
 import Link from "next/link";
 import TourSwiper from "@/components/swiper/TourSwiper";
-import Welcome from "@/components/global/Welcome";
 import Image from "next/image";
 import DestinationSwiper from "@/components/swiper/DestinationSwiper";
 import { tourService } from "@/services/api/tour";
-import imgCover from "../../public/img-1.webp";
 
 export default async function Home() {
-  // const [popularTours, setPopularTours] = useState([]);
-  // useEffect(() => {
-  //   const getPopularTours = async () => {
-  //     const popularTours = await tourService.getPopularTours();
-  //     setPopularTours(popularTours.data);
-  //   };
-  //   getPopularTours();
-  // }, []);
   const popularTours = await (await tourService.getPopularTours()).data;
 
   return (
     <>
-      <Image
-        src={imgCover}
-        alt="imgCover"
-        sizes="100vw"
-        className="w-full lg:h-[calc(100vh-128px)] max-sm:h-[400px] object-cover"
-      />
-      <Welcome />
+      <div className="relative">
+        <Image
+          src="https://motorbiketourexpert.com/demo/wp-content/uploads/2024/01/Northwest-Vietnam-touring.jpg"
+          alt="imgCover"
+          sizes="100vw"
+          width={2048}
+          height={1153}
+          className="w-full lg:h-[calc(100vh-66px)] max-sm:h-[400px] object-cover"
+        />
+        <div className="absolute inset-0 bg-black opacity-20"></div>
+      </div>
+      {/* <Welcome /> */}
       <div className="p-10">
         <div className="overflow-hidden mb-16 relative rounded-xl mt-6">
           <Image
@@ -72,8 +67,8 @@ export default async function Home() {
         </div>
 
         <div className="mb-16">
-          <h1 className="text-4xl font-semibold mb-6 font-sans text-center text-gray-900">
-            TOUR PHỔ BIẾN
+          <h1 className="text-[42px] font-semibold mb-6 font-sans text-center text-gray-800">
+            Tour nổi bật
           </h1>
           <TourSwiper tours={popularTours} />
           <div className="flex-center mt-6">
@@ -87,8 +82,8 @@ export default async function Home() {
         </div>
 
         <div className="mb-16">
-          <h1 className="text-4xl font-semibold mb-6 font-sans text-center text-gray-900">
-            ĐIỂM ĐẾN YÊU THÍCH
+          <h1 className="text-[42px] font-semibold mb-6 font-sans text-center text-gray-800">
+            Điểm đến yêu thích
           </h1>
           <DestinationSwiper images={[1, 2, 3, 4, 5, 6]} />
           <div className="flex-center mt-6">

@@ -35,12 +35,12 @@ const Navbar = () => {
         </Link>
         <Drawer />
       </div>
-      <ul className="flex items-center justify-between text-gray-700 font-semibold basis-1/2 max-lg:hidden">
+      <ul className="flex items-center justify-around text-gray-700 font-semibold basis-1/2 max-lg:hidden">
         <li className={`nav-item ${pathname === "/" ? "active" : ""}`}>
           <Link href={"/"}>Trang chủ</Link>
         </li>
         <li className={`nav-item ${pathname === "/tours" ? "active" : ""}`}>
-          <Link href={"/tours"}>Tour xe motor</Link>
+          <Link href={"/tours"}>Tour motor</Link>
         </li>
 
         <li
@@ -76,7 +76,7 @@ const Navbar = () => {
               height={42}
               className="w-[42px] h-[42px] object-cover rounded-full mr-2"
             />
-            <p>{user?.name}</p>
+            <p className="text-sm">{user?.name}</p>
             <FaChevronDown size={12} className="ml-1" />
           </div>
 
