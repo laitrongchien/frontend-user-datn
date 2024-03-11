@@ -11,6 +11,7 @@ import {
 } from "react-icons/lu";
 import Link from "next/link";
 import { tourService } from "@/services/api/tour";
+import { useAppSelector } from "@/store/hooks";
 
 const HorizTourCard = ({
   tour,
@@ -20,9 +21,13 @@ const HorizTourCard = ({
   hideHeartIcon: boolean;
 }) => {
   const [isFavorited, setIsFavorited] = useState(tour.isFavorite);
+  const { user } = useAppSelector((state) => state.auth);
+
   const handleLikeTour = async () => {
     setIsFavorited(!isFavorited);
-    await tourService.likeTour(tour._id);
+    if (user) {
+      await tourService.likeTour(tour._id);
+    }
   };
   return (
     <div className="flex justify-between max-md:flex-col">
