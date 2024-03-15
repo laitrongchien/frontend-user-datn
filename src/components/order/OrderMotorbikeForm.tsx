@@ -6,6 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useAppSelector } from "@/store/hooks";
 import Link from "next/link";
 import axios from "axios";
+import { paymentService } from "@/services/api/payment";
 
 const OrderMotorbikeForm = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -14,10 +15,7 @@ const OrderMotorbikeForm = () => {
 
   const handleOrderMotorbike = async (event: any) => {
     event.preventDefault();
-    const res = await axios.post(
-      "http://localhost:8000/api/payment/create-payment-url",
-      { amount: 10000 }
-    );
+    const res = await paymentService.createPaymentUrl(10000);
     const paymentUrl = res.data;
     window.location.href = paymentUrl;
   };
