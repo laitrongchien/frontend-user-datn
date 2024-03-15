@@ -52,16 +52,16 @@ const HorizTourCard = ({
         <h1 className="font-semibold max-md:mt-4">{tour.name}</h1>
         <div>
           <div className="flex items-center py-1">
+            <LuCircleDollarSign size={24} />
+            <p className="ml-4">{tour.price}</p>
+          </div>
+          <div className="flex items-center py-1">
             <LuMapPin size={24} />
             <p className="ml-4">{tour.startLocation}</p>
           </div>
           <div className="flex items-center py-1">
             <LuCalendar size={24} />
             <p className="ml-4">{tour.duration}</p>
-          </div>
-          <div className="flex items-center py-1">
-            <LuCircleDollarSign size={24} />
-            <p className="ml-4">{tour.price}</p>
           </div>
           <div className="flex items-center py-1">
             <LuStar size={24} />

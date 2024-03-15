@@ -5,10 +5,12 @@ import { useRouter } from "next/navigation";
 const Pagination = ({
   currentPage,
   totalPages,
+  route,
   onPageChange,
 }: {
   currentPage: number;
   totalPages: number;
+  route: string;
   onPageChange: (page: number) => void;
 }) => {
   const router = useRouter();
@@ -25,7 +27,7 @@ const Pagination = ({
             currentPage === number ? "btn-active" : ""
           }`}
           onClick={() => {
-            router.push(`/tours?page=${number}`, { scroll: false });
+            router.push(`${route}?page=${number}`, { scroll: false });
             onPageChange(number);
           }}
         >

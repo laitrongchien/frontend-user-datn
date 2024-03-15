@@ -14,13 +14,14 @@ const Sidebar = () => {
           <LuUser />
           <p className="ml-2">Tài khoản</p>
         </li>
-        <li className="p-1.5 hover:bg-gray-100 rounded-md">
-          <Link
-            href={"/profile/info"}
-            className={`flex items-center w-full ${
-              pathname === "/profile/info" ? "text-primary font-semibold" : ""
-            }`}
-          >
+        <li
+          className={`p-1.5 hover:bg-gray-100 rounded-md ${
+            pathname === "/profile/info"
+              ? "text-primary font-semibold bg-gray-100"
+              : ""
+          }`}
+        >
+          <Link href={"/profile/info"} className="flex items-center w-full">
             <p className="ml-6">Thông tin cá nhân</p>
           </Link>
         </li>
@@ -28,20 +29,31 @@ const Sidebar = () => {
           <FaRegHeart />
           <p className="ml-2">Yêu thích</p>
         </li>
-        <li className="p-1.5 hover:bg-gray-100 rounded-md">
+        <li
+          className={`p-1.5 hover:bg-gray-100 rounded-md ${
+            pathname === "/profile/favorite-tours"
+              ? "text-primary font-semibold bg-gray-100"
+              : ""
+          }`}
+        >
           <Link
             href={"/profile/favorite-tours"}
-            className={`flex items-center w-full ${
-              pathname === "/profile/favorite-tours"
-                ? "text-primary font-semibold"
-                : ""
-            }`}
+            className="flex items-center w-full"
           >
             <p className="ml-6">Tour xe motor</p>
           </Link>
         </li>
-        <li className="p-1.5 hover:bg-gray-100 rounded-md">
-          <Link href={"/profile/info"} className="flex items-center w-full">
+        <li
+          className={`p-1.5 hover:bg-gray-100 rounded-md ${
+            pathname === "/profile/favorite-motorbikes"
+              ? "text-primary font-semibold bg-gray-100"
+              : ""
+          }`}
+        >
+          <Link
+            href={"/profile/favorite-motorbikes"}
+            className="flex items-center w-full"
+          >
             <p className="ml-6">Xe motor</p>
           </Link>
         </li>

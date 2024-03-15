@@ -72,6 +72,7 @@ const Tour = () => {
         <Pagination
           currentPage={currentPage}
           totalPages={totalPages}
+          route="/tours"
           onPageChange={handlePageChange}
         />
       </div>

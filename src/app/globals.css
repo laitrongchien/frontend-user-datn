@@ -50,6 +50,19 @@
   background: #888;
 }
 
+.react-datepicker-wrapper,
+.react-datepicker__input-container,
+.react-datepicker__input-container input {
+  display: block;
+  width: 100%;
+  outline: none;
+}
+
+.react-datepicker-wrapper input {
+  border: 1px solid #888;
+  border-radius: 8px;
+}
+
 .nav-item {
   @apply inline-block hover:text-primary hover:border-b-2 hover:border-primary;
 }

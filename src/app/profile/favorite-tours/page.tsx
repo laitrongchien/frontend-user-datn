@@ -7,7 +7,7 @@ import HorizTourCard from "@/components/card/HorizTourCard";
 import { MdOutlineClose } from "react-icons/md";
 import Modal from "@/components/global/Modal";
 
-const ProfileInfo = () => {
+const FavoriteTours = () => {
   const [favoriteTours, setFavoriteTours] = useState<any[]>([]);
   const [selectedTourId, setSelectedTourId] = useState<string | null>(null);
   useEffect(() => {
@@ -65,4 +65,4 @@ const ProfileInfo = () => {
   );
 };
 
-export default ProfileInfo;
+export default FavoriteTours;

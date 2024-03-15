@@ -7,6 +7,7 @@ const nextConfig = {
       "rentabikevn.com",
       "lh3.googleusercontent.com",
       "res.cloudinary.com",
+      "cdn.riderly.com",
     ],
   },
 };

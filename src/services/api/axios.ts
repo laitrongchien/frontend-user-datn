@@ -36,7 +36,12 @@ instance.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
     if (error.response) {
-      if (error.response.status === 401 && !originalRequest._retry) {
+      const access_token = getLocalAccessToken();
+      if (
+        error.response.status === 401 &&
+        access_token &&
+        !originalRequest._retry
+      ) {
         originalRequest._retry = true;
 
         try {
