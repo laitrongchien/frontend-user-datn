@@ -2,15 +2,52 @@
 
 import Link from "next/link";
 import { FaCheckCircle } from "react-icons/fa";
-import { useSearchParams } from "next/navigation";
+
 import { MdError } from "react-icons/md";
+import { useEffect } from "react";
+import { motorbikeService } from "@/services/api/motorbike";
+import {
+  getBookingData,
+  removeBookingData,
+  getRentalData,
+  removeRentalData,
+} from "@/utils/storage";
+import { useSearchParams } from "next/navigation";
+import { bookingTourService } from "@/services/api/booking";
 
 const PaymentResult = () => {
   const searchParams = useSearchParams();
   const paymentStatus = searchParams.get("vnp_TransactionStatus");
+  const rentalData = getRentalData();
+  const bookingTourData = getBookingData();
+
+  useEffect(() => {
+    const createRental = async () => {
+      try {
+        await motorbikeService.createRentalMotorbike(rentalData);
+      } catch (error) {
+        console.error("Error creating rental:", error);
+      } finally {
+        removeRentalData();
+      }
+    };
+
+    const createBookingTour = async () => {
+      try {
+        await bookingTourService.createBookingTour(bookingTourData);
+      } catch (error) {
+        console.error("Error creating booking tour:", error);
+      } finally {
+        removeBookingData();
+      }
+    };
+
+    if (paymentStatus === "00" && rentalData) createRental();
+    if (paymentStatus === "00" && bookingTourData) createBookingTour();
+  }, [paymentStatus, rentalData, bookingTourData]);
 
   return (
-    <div className="flex-center mt-[10%]">
+    <div className="flex-center h-[calc(100vh-66px)]">
       <div>
         <div className="flex-center">
           {paymentStatus === "00" ? (

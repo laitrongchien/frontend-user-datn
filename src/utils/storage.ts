@@ -24,6 +24,46 @@ export const removeUser = () => {
   }
 };
 
+export const setRentalData = (rentalData: any) => {
+  if (typeof window !== "undefined") {
+    localStorage.setItem("rentalData", JSON.stringify(rentalData));
+  }
+};
+
+export const getRentalData = () => {
+  if (typeof window !== "undefined") {
+    const rentalData = JSON.parse(localStorage.getItem("rentalData") as string);
+    return rentalData;
+  }
+};
+
+export const removeRentalData = () => {
+  if (typeof window !== "undefined") {
+    localStorage.removeItem("rentalData");
+  }
+};
+
+export const setBookingData = (bookingTourData: any) => {
+  if (typeof window !== "undefined") {
+    localStorage.setItem("bookingTourData", JSON.stringify(bookingTourData));
+  }
+};
+
+export const getBookingData = () => {
+  if (typeof window !== "undefined") {
+    const bookingTourData = JSON.parse(
+      localStorage.getItem("bookingTourData") as string
+    );
+    return bookingTourData;
+  }
+};
+
+export const removeBookingData = () => {
+  if (typeof window !== "undefined") {
+    localStorage.removeItem("bookingTourData");
+  }
+};
+
 export const clear = () => {
   if (typeof window !== "undefined") {
     localStorage.clear();

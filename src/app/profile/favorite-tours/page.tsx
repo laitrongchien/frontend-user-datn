@@ -37,22 +37,28 @@ const FavoriteTours = () => {
     <>
       <ProfileLayout>
         <div className="rounded-lg px-10 py-4 w-full bg-white shadow-md">
-          {favoriteTours.map((favoriteTour: any) => (
-            <div key={favoriteTour.tour._id} className="mb-12 relative">
-              <HorizTourCard tour={favoriteTour.tour} hideHeartIcon={true} />
-              <button
-                className="absolute top-2 left-2 flex-center p-1 bg-white rounded-full"
-                onClick={() => {
-                  handleDeleteTour(favoriteTour.tour._id);
-                  (
-                    document.getElementById("my_modal_2") as HTMLDialogElement
-                  )?.showModal();
-                }}
-              >
-                <MdOutlineClose size={20} />
-              </button>
+          {favoriteTours.length === 0 ? (
+            <div className="h-[300px] flex-center">
+              <h1>Chưa có tour yêu thích</h1>
             </div>
-          ))}
+          ) : (
+            favoriteTours.map((favoriteTour: any) => (
+              <div key={favoriteTour.tour._id} className="mb-12 relative">
+                <HorizTourCard tour={favoriteTour.tour} hideHeartIcon={true} />
+                <button
+                  className="absolute top-2 left-2 flex-center p-1 bg-white rounded-full"
+                  onClick={() => {
+                    handleDeleteTour(favoriteTour.tour._id);
+                    (
+                      document.getElementById("my_modal_2") as HTMLDialogElement
+                    )?.showModal();
+                  }}
+                >
+                  <MdOutlineClose size={20} />
+                </button>
+              </div>
+            ))
+          )}
         </div>
       </ProfileLayout>
 

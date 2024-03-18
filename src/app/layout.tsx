@@ -3,6 +3,7 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 import { AppProvider } from "@/store/provider";
 import Navbar from "@/components/global/Navbar";
+import Footer from "@/components/global/Footer";
 import ToastProvider from "@/components/global/Toast";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
@@ -35,6 +36,7 @@ export default function RootLayout({
             <ToastProvider>
               <main className="mt-[66px]">{children}</main>
             </ToastProvider>
+            <Footer />
           </GoogleOAuthProvider>
         </AppProvider>
       </body>

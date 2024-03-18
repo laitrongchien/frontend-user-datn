@@ -4,6 +4,7 @@ import Image from "next/image";
 import { FaHeart } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { tourService } from "@/services/api/tour";
+import { formatCurrency } from "@/utils/common";
 
 const TourCard = ({ tour }: { tour: any }) => {
   return (
@@ -18,8 +19,11 @@ const TourCard = ({ tour }: { tour: any }) => {
         />
       </div>
       <div className="p-2">
-        <p className="text-primary py-1 border-b border-gray-300 font-semibold">
-          $2000
+        <p className="py-1 border-b border-gray-300">
+          <span className="text-primary font-semibold">
+            {formatCurrency(tour.price)}
+          </span>
+          / người
         </p>
         <h1 className="font-semibold py-1 border-b border-gray-300">
           {tour.name}

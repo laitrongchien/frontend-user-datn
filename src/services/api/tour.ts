@@ -9,6 +9,10 @@ const getAllTours = async (page: number, limit: number, userId?: string) => {
   return res;
 };
 
+const getTourById = async (id: string) => {
+  return await axios.get(`/tour/get-tour/${id}`);
+};
+
 const getPopularTours = async () => {
   return await axios.get("/tour/popular-tours");
 };
@@ -31,4 +35,5 @@ export const tourService = {
   getFavoriteTours,
   likeTour,
   unlikeTour,
+  getTourById,
 };

@@ -59,24 +59,36 @@ const Sidebar = () => {
         </li>
         <li className="p-1.5 hover:bg-gray-100 rounded-md flex items-center">
           <LuTicket />
-          <p className="ml-2">Đơn đặt</p>
+          <p className="ml-2">Lịch sử</p>
         </li>
-        <li className="p-1.5 hover:bg-gray-100 rounded-md">
-          <Link href={"/profile/info"} className="flex items-center w-full">
-            <p className="ml-6">Tour đã đặt</p>
+        <li
+          className={`p-1.5 hover:bg-gray-100 rounded-md ${
+            pathname === "/profile/booking-tour-orders"
+              ? "text-primary font-semibold bg-gray-100"
+              : ""
+          }`}
+        >
+          <Link
+            href={"/profile/booking-tour-orders"}
+            className="flex items-center w-full"
+          >
+            <p className="ml-6">Tour đã book</p>
           </Link>
         </li>
-        <li className="p-1.5 hover:bg-gray-100 rounded-md">
-          <Link href={"/profile/info"} className="flex items-center w-full">
-            <p className="ml-6">Xe motor đã thuê</p>
+        <li
+          className={`p-1.5 hover:bg-gray-100 rounded-md ${
+            pathname === "/profile/rental-motorbike-orders"
+              ? "text-primary font-semibold bg-gray-100"
+              : ""
+          }`}
+        >
+          <Link
+            href={"/profile/rental-motorbike-orders"}
+            className="flex items-center w-full"
+          >
+            <p className="ml-6">Đơn thuê xe motor</p>
           </Link>
         </li>
-        {/* <li className="p-1.5 hover:bg-gray-100 rounded-md">
-          <Link href={"/profile/reviews"} className="flex items-center w-full">
-            <LuStar />
-            <p className="ml-2">Đánh giá</p>
-          </Link>
-        </li> */}
       </ul>
     </aside>
   );

@@ -37,7 +37,7 @@ const MotorbikeCard = ({
             alt="img1"
             width={279}
             height={175}
-            className="w-80 h-52 object-cover rounded-lg max-md:w-full max-md:h-auto border border-gray-300"
+            className="w-80 h-52 object-cover rounded-lg max-md:w-full max-md:h-auto border border-gray-400"
           />
         </Link>
         {!hideHeartIcon && (

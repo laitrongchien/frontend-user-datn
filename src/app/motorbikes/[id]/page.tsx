@@ -6,7 +6,7 @@ import { MdOutlineCheck } from "react-icons/md";
 import { useEffect, useState } from "react";
 import { motorbikeService } from "@/services/api/motorbike";
 import Loading from "@/components/global/Loading";
-import OrderMotorbikeForm from "@/components/order/OrderMotorbikeForm";
+import RentMotorbikeForm from "@/components/order/RentMotorbikeForm";
 
 const MotorbikeDetail = ({ params }: { params: { id: string } }) => {
   const [motorbike, setMotorbike] = useState<any>();
@@ -115,7 +115,10 @@ const MotorbikeDetail = ({ params }: { params: { id: string } }) => {
 
         <div className="basis-[36%] relative">
           <div className="w-full top-[106px] right-0 sticky">
-            <OrderMotorbikeForm />
+            <RentMotorbikeForm
+              motorbikeId={motorbikeId}
+              motorbikePrice={motorbike?.price}
+            />
           </div>
         </div>
       </div>
