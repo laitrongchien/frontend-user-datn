@@ -34,7 +34,7 @@ const Motorbike = () => {
         sortOrder = -1;
         break;
       case "decrease-rating":
-        sortField = "rating";
+        sortField = "ratingsAverage";
         sortOrder = -1;
         break;
       default:

@@ -6,6 +6,38 @@ import { tourService } from "@/services/api/tour";
 
 export default async function Home() {
   const popularTours = await (await tourService.getPopularTours()).data;
+  const popularDestinations = [
+    {
+      name: "Cao Bằng",
+      image:
+        "https://motorbiketourexpert.com/demo/wp-content/uploads/2024/01/Amazing-Cao-Bang.jpg",
+    },
+    {
+      name: "Hà Giang",
+      image:
+        "https://motorbiketourexpert.com/demo/wp-content/uploads/2023/12/Frame-14-min-scaled.jpg",
+    },
+    {
+      name: "Mù Cang Chải",
+      image:
+        "https://motorbiketourexpert.com/demo/wp-content/uploads/2023/12/Frame-1-scaled.jpg",
+    },
+    {
+      name: "Mã Pí Lèng",
+      image:
+        "https://motorbiketourexpert.com/demo/wp-content/uploads/2023/12/bg.jpg",
+    },
+    {
+      name: "Tà Xùa",
+      image:
+        "https://motorbiketourexpert.com/demo/wp-content/uploads/2023/12/Frame-6-min-scaled.jpg",
+    },
+    {
+      name: "Hồ Thác Bà",
+      image:
+        "https://motorbiketourexpert.com/demo/wp-content/uploads/2024/01/Thac-Ba-lake-Yen-Bai.jpg",
+    },
+  ];
 
   return (
     <>
@@ -85,15 +117,7 @@ export default async function Home() {
           <h1 className="text-[36px] font-semibold mb-6 text-center text-gray-800">
             Điểm đến yêu thích
           </h1>
-          <DestinationSwiper images={[1, 2, 3, 4, 5, 6]} />
-          {/* <div className="flex-center mt-6">
-            <Link
-              href={"/"}
-              className="text-primary font-semibold border border-primary px-6 py-2 hover:text-white hover:bg-primary"
-            >
-              Xem tất cả
-            </Link>
-          </div> */}
+          <DestinationSwiper destinations={popularDestinations} />
         </div>
       </div>
     </>

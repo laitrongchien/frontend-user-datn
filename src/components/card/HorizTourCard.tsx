@@ -75,7 +75,11 @@ const HorizTourCard = ({
           </div>
           <div className="flex items-center py-1">
             <LuStar size={24} />
-            <p className="ml-4">{tour.ratingsAverage}</p>
+            <p className="ml-4">
+              {tour.ratingsQuantity === 0
+                ? "Chưa có đánh giá!"
+                : `${tour.ratingsAverage} (${tour.ratingsQuantity})`}
+            </p>
           </div>
         </div>
         <Link

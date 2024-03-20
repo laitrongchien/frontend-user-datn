@@ -4,7 +4,7 @@ import Image from "next/image";
 import { FaHeart } from "react-icons/fa";
 import { useState } from "react";
 import Link from "next/link";
-import { MdHeight, MdLocalGasStation } from "react-icons/md";
+import { MdHeight, MdLocalGasStation, MdStar } from "react-icons/md";
 import { FaMotorcycle } from "react-icons/fa6";
 import { motorbikeService } from "@/services/api/motorbike";
 import { useAppSelector } from "@/store/hooks";
@@ -52,11 +52,19 @@ const MotorbikeCard = ({
       <div className="md:px-6 flex flex-col justify-between flex-1">
         <div>
           <h1 className="font-semibold max-md:mt-4">{motorbike.name}</h1>
-          <div>
-            <span className="text-primary font-semibold">
-              {formatCurrency(motorbike.price)}
-            </span>
-            <span>/ngày</span>
+          <div className="flex justify-between">
+            <p>
+              <span className="text-primary font-semibold">
+                {formatCurrency(motorbike.price)}
+              </span>
+              /ngày
+            </p>
+            {motorbike.ratingsQuantity !== 0 && (
+              <div className="flex items-center">
+                <MdStar color="#fb923c" />
+                <p>{`${motorbike.ratingsAverage} (${motorbike.ratingsQuantity})`}</p>
+              </div>
+            )}
           </div>
           <div className="flex items-center mt-4">
             <div className="flex items-center py-1 min-w-[100px]">

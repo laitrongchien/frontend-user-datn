@@ -4,14 +4,21 @@ import ReviewCard from "@/components/card/ReviewCard";
 import Loading from "@/components/global/Loading";
 import BookingTourForm from "@/components/order/BookingTourForm";
 import { tourService } from "@/services/api/tour";
+import { reviewService } from "@/services/api/review";
 import { formatCurrency } from "@/utils/common";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { MdOutlineCheck } from "react-icons/md";
+import CreateReviewTour from "@/components/review/CreateReviewTour";
 
 const TourDetail = ({ params }: { params: { id: string } }) => {
   const [tour, setTour] = useState<any>();
+  const [reviews, setReviews] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
+
+  const createReview = (newReview: any) => {
+    setReviews([newReview, ...reviews]);
+  };
 
   const tourId = params.id;
   useEffect(() => {
@@ -19,8 +26,10 @@ const TourDetail = ({ params }: { params: { id: string } }) => {
       const fetchTour = async () => {
         setLoading(true);
         const res = await tourService.getTourById(tourId);
+        const reviewRes = await reviewService.getReviewsByTour(tourId);
         setLoading(false);
         setTour(res.data);
+        setReviews(reviewRes.data);
       };
       fetchTour();
     }
@@ -105,11 +114,19 @@ const TourDetail = ({ params }: { params: { id: string } }) => {
         </div>
       </div>
       <div className="mt-6">
-        <h1 className="text-lg font-semibold">Đánh giá từ khách hàng</h1>
-        <ReviewCard />
-        <ReviewCard />
-        <ReviewCard />
-        <ReviewCard />
+        <h1 className="text-lg font-semibold">
+          Đánh giá gần nhất từ khách hàng
+        </h1>
+        {reviews.length === 0 ? (
+          <h1>Chưa có đánh giá!</h1>
+        ) : (
+          reviews
+            .slice(0, 5)
+            .map((review: any) => (
+              <ReviewCard key={review._id} review={review} />
+            ))
+        )}
+        <CreateReviewTour tourId={tourId} createReview={createReview} />
       </div>
       <div className="mt-6 flex-center">
         <div className="lg:w-[50%]">

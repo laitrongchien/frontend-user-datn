@@ -37,7 +37,7 @@ const BookingTourForm = ({ tour }: { tour: any }) => {
 
   return (
     <form
-      className="py-2 px-6 border rounded-lg mt-4"
+      className="py-2 px-6 border border-gray-400 rounded-lg mt-4"
       onSubmit={handleBookTour}
     >
       <div className="mt-2">
@@ -133,7 +133,7 @@ const BookingTourForm = ({ tour }: { tour: any }) => {
       {user ? (
         <button
           type="submit"
-          className="w-full p-1.5 rounded-lg text-white bg-primary"
+          className="w-full p-1.5 rounded-lg text-white bg-primary mb-4"
         >
           Thanh toán
         </button>

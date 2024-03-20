@@ -62,11 +62,19 @@ const FavoriteTours = () => {
         </div>
       </ProfileLayout>
 
-      <Modal
-        title="Xóa tour yêu thích này"
-        message="Bạn chắc chắn muốn xóa tour này khỏi danh sách yêu thích chứ?"
-        onConfirm={confirmDeleteTour}
-      />
+      <Modal>
+        <h3 className="font-bold text-lg">Xóa tour yêu thích này</h3>
+        <p className="py-4">
+          Bạn chắc chắn muốn xóa tour này khỏi danh sách yêu thích chứ?
+        </p>
+        <div className="flex justify-end">
+          <form method="dialog">
+            <button className="btn" onClick={confirmDeleteTour}>
+              Xác nhận
+            </button>
+          </form>
+        </div>
+      </Modal>
     </>
   );
 };

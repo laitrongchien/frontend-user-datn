@@ -7,10 +7,17 @@ import { useEffect, useState } from "react";
 import { motorbikeService } from "@/services/api/motorbike";
 import Loading from "@/components/global/Loading";
 import RentMotorbikeForm from "@/components/order/RentMotorbikeForm";
+import { reviewService } from "@/services/api/review";
+import CreateReviewMotorbike from "@/components/review/CreateReviewMotorbike";
 
 const MotorbikeDetail = ({ params }: { params: { id: string } }) => {
   const [motorbike, setMotorbike] = useState<any>();
+  const [reviews, setReviews] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
+
+  const createReview = (newReview: any) => {
+    setReviews([newReview, ...reviews]);
+  };
 
   const motorbikeId = params.id;
   useEffect(() => {
@@ -18,8 +25,12 @@ const MotorbikeDetail = ({ params }: { params: { id: string } }) => {
       const fetchMotorbike = async () => {
         setLoading(true);
         const res = await motorbikeService.getMotorbikeById(motorbikeId);
+        const reviewRes = await reviewService.getReviewsByMotorbike(
+          motorbikeId
+        );
         setLoading(false);
         setMotorbike(res.data);
+        setReviews(reviewRes.data);
       };
       fetchMotorbike();
     }
@@ -105,11 +116,22 @@ const MotorbikeDetail = ({ params }: { params: { id: string } }) => {
             </div>
           </div>
           <div className="mt-6">
-            <h1 className="text-lg font-semibold">Đánh giá từ khách hàng</h1>
-            <ReviewCard />
-            <ReviewCard />
-            <ReviewCard />
-            <ReviewCard />
+            <h1 className="text-lg font-semibold">
+              Đánh giá gần nhất từ khách hàng
+            </h1>
+            {reviews.length === 0 ? (
+              <h1>Chưa có đánh giá!</h1>
+            ) : (
+              reviews
+                .slice(0, 5)
+                .map((review: any) => (
+                  <ReviewCard key={review._id} review={review} />
+                ))
+            )}
+            <CreateReviewMotorbike
+              motorbikeId={motorbikeId}
+              createReview={createReview}
+            />
           </div>
         </div>
 
@@ -122,7 +144,6 @@ const MotorbikeDetail = ({ params }: { params: { id: string } }) => {
           </div>
         </div>
       </div>
-      <div className="h-[200vh] bg-orange-600"></div>
     </div>
   );
 };

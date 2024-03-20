@@ -4,19 +4,19 @@ const Footer = () => {
   return (
     <footer className="footer footer-center p-10 bg-base-200 text-base-content rounded">
       <nav className="grid grid-flow-col gap-4">
-        <Link href={"/"} className="link link-hover">
+        <Link href={"/"} className="link link-hover text-base">
           Trang chủ
         </Link>
-        <Link href={"/tours"} className="link link-hover">
+        <Link href={"/tours"} className="link link-hover text-base">
           Tour xe motor
         </Link>
-        <Link href={"/motorbikes"} className="link link-hover">
+        <Link href={"/motorbikes"} className="link link-hover text-base">
           Xe motor
         </Link>
-        <Link href={"/destinations"} className="link link-hover">
+        <Link href={"/destinations"} className="link link-hover text-base">
           Điểm đến
         </Link>
-        <Link href={"/blogs"} className="link link-hover">
+        <Link href={"/blogs"} className="link link-hover text-base">
           Bài viết
         </Link>
       </nav>

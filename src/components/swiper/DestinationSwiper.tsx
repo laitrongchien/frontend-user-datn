@@ -5,7 +5,7 @@ import "swiper/css";
 import SwiperNavButton from "./SwiperNavButton";
 import Image from "next/image";
 
-const DestinationSwiper = ({ images }: { images: any[] }) => {
+const DestinationSwiper = ({ destinations }: { destinations: any[] }) => {
   return (
     <div>
       <Swiper
@@ -22,11 +22,11 @@ const DestinationSwiper = ({ images }: { images: any[] }) => {
           },
         }}
       >
-        {images.map((image: number, index: number) => (
+        {destinations.map((destination: any, index: number) => (
           <SwiperSlide key={index}>
             <div className="relative">
               <Image
-                src="https://motorbiketourexpert.com/demo/wp-content/uploads/2023/12/Frame-14-min-scaled.jpg"
+                src={destination.image}
                 alt="destination-img"
                 width={1365}
                 height={547}
@@ -35,7 +35,7 @@ const DestinationSwiper = ({ images }: { images: any[] }) => {
               <div className="absolute inset-0 bg-black opacity-30 hover:opacity-0"></div>
               <div className="absolute bottom-0 py-8 px-4 w-full">
                 <h1 className="z-10 text-white border-b border-white font-extrabold">
-                  Hà Giang
+                  {destination.name}
                 </h1>
               </div>
             </div>
