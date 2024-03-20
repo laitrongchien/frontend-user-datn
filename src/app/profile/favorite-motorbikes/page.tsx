@@ -66,11 +66,19 @@ const FavoriteMotorbikes = () => {
         </div>
       </ProfileLayout>
 
-      <Modal
-        title="Xóa xe motor yêu thích này"
-        message="Bạn chắc chắn muốn xóa xe này này khỏi danh sách yêu thích chứ?"
-        onConfirm={confirmDeleteMotorbike}
-      />
+      <Modal>
+        <h3 className="font-bold text-lg">Xóa xe motor yêu thích này</h3>
+        <p className="py-4">
+          Bạn chắc chắn muốn xóa xe này này khỏi danh sách yêu thích chứ?
+        </p>
+        <div className="flex justify-end">
+          <form method="dialog">
+            <button className="btn" onClick={confirmDeleteMotorbike}>
+              Xác nhận
+            </button>
+          </form>
+        </div>
+      </Modal>
     </>
   );
 };
