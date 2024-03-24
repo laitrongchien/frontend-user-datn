@@ -1,7 +1,7 @@
 import axios from "./axios";
 
 const getAllTours = async (page: number, limit: number, userId?: string) => {
-  let url = `/tour?page=${page}&limit=${limit}`;
+  let url = `/tour/all?page=${page}&limit=${limit}`;
   if (userId) {
     url += `&userId=${userId}`;
   }

@@ -60,6 +60,7 @@ const BookingOrders = () => {
     rows: {
       style: {
         fontSize: "15px",
+        minHeight: "64px",
       },
     },
     headCells: {
@@ -72,8 +73,8 @@ const BookingOrders = () => {
   };
   return (
     <ProfileLayout>
-      <div className="rounded-lg px-10 py-4 w-full bg-white shadow-md flex min-h-[300px]">
-        <div className="w-full h-full">
+      <div className="rounded-lg px-10 py-4 w-[calc(100vw-352px)] bg-white shadow-md flex min-h-[300px]">
+        <div className="w-full h-full rounded-lg shadow-sm border border-gray-100">
           {loading ? (
             <Loading />
           ) : (
@@ -81,8 +82,8 @@ const BookingOrders = () => {
               columns={columns}
               data={bookingTours}
               pagination
+              paginationRowsPerPageOptions={[5, 10, 15]}
               responsive
-              title="Đơn book tour"
               customStyles={customStyles}
             />
           )}
