@@ -48,16 +48,19 @@ const CreateReviewMotorbike = ({
 
   return (
     <div className="mt-6">
-      <button
-        onClick={() => {
-          (
-            document.getElementById("my_modal_2") as HTMLDialogElement
-          )?.showModal();
-        }}
-        className="p-2 border border-gray-200 rounded-lg bg-primary text-white"
-      >
-        Viết đánh giá của bạn
-      </button>
+      {user && (
+        <button
+          onClick={() => {
+            (
+              document.getElementById("my_modal_2") as HTMLDialogElement
+            )?.showModal();
+          }}
+          className="p-2 border border-gray-200 rounded-lg bg-primary text-white"
+        >
+          Viết đánh giá của bạn
+        </button>
+      )}
+
       <Modal>
         <h3 className="font-semibold">Viết đánh giá của bạn</h3>
         <div className="rating rating-md mt-2">{renderStars()}</div>
