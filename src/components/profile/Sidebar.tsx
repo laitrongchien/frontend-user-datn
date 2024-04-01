@@ -63,7 +63,7 @@ const Sidebar = () => {
         </li>
         <li
           className={`p-1.5 hover:bg-gray-100 rounded-md ${
-            pathname === "/profile/booking-tour-orders"
+            pathname.includes("/profile/booking-tour-orders")
               ? "text-primary font-semibold bg-gray-100"
               : ""
           }`}
@@ -77,7 +77,7 @@ const Sidebar = () => {
         </li>
         <li
           className={`p-1.5 hover:bg-gray-100 rounded-md ${
-            pathname === "/profile/rental-motorbike-orders"
+            pathname.includes("/profile/rental-motorbike-orders")
               ? "text-primary font-semibold bg-gray-100"
               : ""
           }`}

@@ -34,14 +34,53 @@ const RentalMotorbikes = () => {
       sortable: true,
     },
     {
-      name: "Trạng thái",
-      selector: (row: any) =>
-        row?.paymentType === "payAll" ? "Thanh toán toàn bộ" : "Thanh toán 20%",
-    },
-    {
       name: "Ngày thanh toán",
       selector: (row: any) => formatTime(row?.createdAt),
       sortable: true,
+    },
+    {
+      name: "Trạng thái thanh toán",
+      cell: (row: any) => (
+        <h1
+          className={`
+            ${
+              row?.paymentType === "payAll" ? "text-success" : "text-primary"
+            } font-semibold
+          `}
+        >
+          {row?.paymentType === "payAll"
+            ? "Đã thanh toán toàn bộ"
+            : "Thanh toán trước 20%"}
+        </h1>
+      ),
+      wrap: true,
+    },
+    {
+      name: "Trạng thái đơn",
+      cell: (row: any) => (
+        <h1
+          className={`
+            ${
+              row?.status === "returned"
+                ? "text-success"
+                : row?.status === "received"
+                ? "text-blue"
+                : row?.status === "not-received"
+                ? "text-error"
+                : "text-primary"
+            } font-semibold
+          `}
+        >
+          {row?.status === "returned"
+            ? "Đã trả xe"
+            : row?.status === "received"
+            ? "Đã nhận xe"
+            : row?.status === "not-received"
+            ? "Không nhận xe"
+            : "Chờ nhận xe"}
+        </h1>
+      ),
+      wrap: true,
     },
     {
       name: "Hành động",
@@ -73,22 +112,21 @@ const RentalMotorbikes = () => {
   };
   return (
     <ProfileLayout>
-      <div className="rounded-lg px-10 py-4 w-[calc(100vw-352px)] bg-white shadow-md flex min-h-[300px]">
-        <div className="w-full h-full rounded-lg shadow-sm border border-gray-100">
-          {loading ? (
-            <Loading />
-          ) : (
+      <div className="rounded-lg px-10 py-4 w-[calc(100vw-352px)] h-full bg-white shadow-md flex">
+        {loading ? (
+          <Loading />
+        ) : (
+          <div className="w-full h-full rounded-lg shadow-sm border border-gray-200">
             <DataTable
               columns={columns}
               data={motorbikeRentals}
-              striped
               responsive
               pagination
               paginationRowsPerPageOptions={[5, 10, 15]}
               customStyles={customStyles}
             />
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </ProfileLayout>
   );

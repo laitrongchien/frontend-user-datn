@@ -6,14 +6,17 @@ import { tourService } from "@/services/api/tour";
 import HorizTourCard from "@/components/card/HorizTourCard";
 import { MdOutlineClose } from "react-icons/md";
 import Modal from "@/components/global/Modal";
+import Loading from "@/components/global/Loading";
 
 const FavoriteTours = () => {
+  const [loading, setLoading] = useState(false);
   const [favoriteTours, setFavoriteTours] = useState<any[]>([]);
   const [selectedTourId, setSelectedTourId] = useState<string | null>(null);
   useEffect(() => {
     const getFavoriteTours = async () => {
+      setLoading(true);
       const res = await tourService.getFavoriteTours();
-      console.log(res);
+      setLoading(false);
       setFavoriteTours(res.data);
     };
     getFavoriteTours();
@@ -36,8 +39,10 @@ const FavoriteTours = () => {
   return (
     <>
       <ProfileLayout>
-        <div className="rounded-lg px-10 py-4 w-full bg-white shadow-md">
-          {favoriteTours.length === 0 ? (
+        <div className="rounded-lg px-10 py-4 w-full h-full bg-white shadow-md">
+          {loading ? (
+            <Loading />
+          ) : favoriteTours.length === 0 ? (
             <div className="h-[300px] flex-center">
               <h1>Chưa có tour yêu thích</h1>
             </div>

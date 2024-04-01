@@ -54,7 +54,9 @@ const Tour = () => {
         <h3 className="text-2xl text-white mt-8 z-10">Tour motor trọn gói</h3>
       </div>
       {loading ? (
-        <Loading />
+        <div className="w-full h-screen">
+          <Loading />
+        </div>
       ) : (
         <div className="px-10 flex items-center justify-between flex-wrap">
           {tours.map((tour: any) => (

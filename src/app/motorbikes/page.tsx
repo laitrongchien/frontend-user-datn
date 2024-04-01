@@ -136,7 +136,9 @@ const Motorbike = () => {
         </select>
       </div>
       {loading ? (
-        <Loading />
+        <div className="w-full h-screen">
+          <Loading />
+        </div>
       ) : (
         <div className="px-10 flex items-center justify-between flex-wrap mt-[-24px]">
           {motorbikes.map((motorbike: any) => (

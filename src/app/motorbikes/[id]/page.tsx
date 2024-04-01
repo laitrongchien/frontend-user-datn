@@ -36,7 +36,12 @@ const MotorbikeDetail = ({ params }: { params: { id: string } }) => {
     }
   }, [motorbikeId]);
 
-  if (loading) return <Loading />;
+  if (loading)
+    return (
+      <div className="w-full h-[calc(100vh-66px)]">
+        <Loading />
+      </div>
+    );
 
   return (
     <div>

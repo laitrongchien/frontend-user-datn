@@ -15,6 +15,9 @@ const config: Config = {
       },
       colors: {
         primary: "#ff7a33",
+        success: "#1abf57",
+        blue: "#03c9d7",
+        error: "#dc2626",
       },
     },
     fontFamily: {

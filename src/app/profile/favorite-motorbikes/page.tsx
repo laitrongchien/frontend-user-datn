@@ -6,16 +6,20 @@ import { motorbikeService } from "@/services/api/motorbike";
 import MotorbikeCard from "@/components/card/MotorbikeCard";
 import { MdOutlineClose } from "react-icons/md";
 import Modal from "@/components/global/Modal";
+import Loading from "@/components/global/Loading";
 
 const FavoriteMotorbikes = () => {
+  const [loading, setLoading] = useState(false);
   const [favoriteMotorbikes, setFavoriteMotorbikes] = useState<any[]>([]);
   const [selectedMotorbikeId, setSelectedMotorbikeId] = useState<string | null>(
     null
   );
+
   useEffect(() => {
     const getFavoriteMotorbikes = async () => {
+      setLoading(true);
       const res = await motorbikeService.getFavoriteMotorbikes();
-      console.log(res);
+      setLoading(false);
       setFavoriteMotorbikes(res.data);
     };
     getFavoriteMotorbikes();
@@ -40,29 +44,33 @@ const FavoriteMotorbikes = () => {
   return (
     <>
       <ProfileLayout>
-        <div className="rounded-lg px-10 py-4 w-full bg-white shadow-md">
-          {favoriteMotorbikes.map((favoriteMotorbike: any) => (
-            <div
-              key={favoriteMotorbike.motorbike._id}
-              className="mb-12 relative"
-            >
-              <MotorbikeCard
-                motorbike={favoriteMotorbike.motorbike}
-                hideHeartIcon={true}
-              />
-              <button
-                className="absolute top-2 left-2 flex-center p-1 bg-white rounded-full border border-gray-500"
-                onClick={() => {
-                  handleDeleteMotorbike(favoriteMotorbike.motorbike._id);
-                  (
-                    document.getElementById("my_modal_2") as HTMLDialogElement
-                  )?.showModal();
-                }}
+        <div className="rounded-lg px-10 py-4 w-full h-full bg-white shadow-md">
+          {loading ? (
+            <Loading />
+          ) : (
+            favoriteMotorbikes.map((favoriteMotorbike: any) => (
+              <div
+                key={favoriteMotorbike.motorbike._id}
+                className="mb-12 relative"
               >
-                <MdOutlineClose size={20} />
-              </button>
-            </div>
-          ))}
+                <MotorbikeCard
+                  motorbike={favoriteMotorbike.motorbike}
+                  hideHeartIcon={true}
+                />
+                <button
+                  className="absolute top-2 left-2 flex-center p-1 bg-white rounded-full border border-gray-500"
+                  onClick={() => {
+                    handleDeleteMotorbike(favoriteMotorbike.motorbike._id);
+                    (
+                      document.getElementById("my_modal_2") as HTMLDialogElement
+                    )?.showModal();
+                  }}
+                >
+                  <MdOutlineClose size={20} />
+                </button>
+              </div>
+            ))
+          )}
         </div>
       </ProfileLayout>
 

@@ -34,14 +34,53 @@ const BookingOrders = () => {
       sortable: true,
     },
     {
-      name: "Trạng thái",
-      selector: (row: any) =>
-        row?.paymentType === "payAll" ? "Thanh toán toàn bộ" : "Thanh toán 20%",
-    },
-    {
       name: "Ngày thanh toán",
       selector: (row: any) => formatTime(row?.createdAt),
       sortable: true,
+    },
+    {
+      name: "Trạng thái thanh toán",
+      cell: (row: any) => (
+        <h1
+          className={`
+            ${
+              row?.paymentType === "payAll" ? "text-success" : "text-primary"
+            } font-semibold
+          `}
+        >
+          {row?.paymentType === "payAll"
+            ? "Đã thanh toán toàn bộ"
+            : "Thanh toán trước 20%"}
+        </h1>
+      ),
+      wrap: true,
+    },
+    {
+      name: "Trạng thái đơn",
+      cell: (row: any) => (
+        <h1
+          className={`
+              ${
+                row?.status === "completed"
+                  ? "text-success"
+                  : row?.status === "started"
+                  ? "text-blue"
+                  : row?.status === "not-started"
+                  ? "text-error"
+                  : "text-primary"
+              } font-semibold
+            `}
+        >
+          {row?.status === "completed"
+            ? "Đã hoàn thành"
+            : row?.status === "started"
+            ? "Đã tham gia"
+            : row?.status === "not-started"
+            ? "Không tham gia"
+            : "Chưa khởi hành"}
+        </h1>
+      ),
+      wrap: true,
     },
     {
       name: "Hành động",
@@ -73,11 +112,11 @@ const BookingOrders = () => {
   };
   return (
     <ProfileLayout>
-      <div className="rounded-lg px-10 py-4 w-[calc(100vw-352px)] bg-white shadow-md flex min-h-[300px]">
-        <div className="w-full h-full rounded-lg shadow-sm border border-gray-100">
-          {loading ? (
-            <Loading />
-          ) : (
+      <div className="rounded-lg px-10 py-4 w-[calc(100vw-352px)] h-full bg-white shadow-md flex">
+        {loading ? (
+          <Loading />
+        ) : (
+          <div className="w-full h-full rounded-lg shadow-sm border border-gray-200">
             <DataTable
               columns={columns}
               data={bookingTours}
@@ -86,8 +125,8 @@ const BookingOrders = () => {
               responsive
               customStyles={customStyles}
             />
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </ProfileLayout>
   );

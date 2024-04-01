@@ -35,7 +35,12 @@ const TourDetail = ({ params }: { params: { id: string } }) => {
     }
   }, [tourId]);
 
-  if (loading) return <Loading />;
+  if (loading)
+    return (
+      <div className="w-full h-[calc(100vh-66px)]">
+        <Loading />
+      </div>
+    );
   return (
     <div className="lg:px-32 py-10 px-6">
       <h1 className="text-3xl font-semibold text-primary">{tour?.name}</h1>
