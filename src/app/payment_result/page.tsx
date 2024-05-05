@@ -5,7 +5,7 @@ import { FaCheckCircle } from "react-icons/fa";
 
 import { MdError } from "react-icons/md";
 import { useEffect } from "react";
-import { motorbikeService } from "@/services/api/motorbike";
+import { rentalService } from "@/services/api/rental";
 import {
   getBookingData,
   removeBookingData,
@@ -24,7 +24,7 @@ const PaymentResult = () => {
   useEffect(() => {
     const createRental = async () => {
       try {
-        await motorbikeService.createRentalMotorbike(rentalData);
+        await rentalService.createRentalMotorbike(rentalData);
       } catch (error) {
         console.error("Error creating rental:", error);
       } finally {

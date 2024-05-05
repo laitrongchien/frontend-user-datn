@@ -2,7 +2,7 @@
 
 import ProfileLayout from "@/components/profile/ProfileLayout";
 import { useEffect, useState } from "react";
-import { motorbikeService } from "@/services/api/motorbike";
+import { rentalService } from "@/services/api/rental";
 import DataTable from "react-data-table-component";
 import { formatCurrency, formatTime } from "@/utils/common";
 import Link from "next/link";
@@ -15,7 +15,7 @@ const RentalMotorbikes = () => {
   useEffect(() => {
     const fetchMyRentals = async () => {
       setLoading(true);
-      const res = await motorbikeService.getMotorbikeRentalsByUser();
+      const res = await rentalService.getMotorbikeRentalsByUser();
       setLoading(false);
       setMotorbikeRentals(res.data);
     };

@@ -1,7 +1,7 @@
 "use client";
 
 import Loading from "@/components/global/Loading";
-import { motorbikeService } from "@/services/api/motorbike";
+import { rentalService } from "@/services/api/rental";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { formatCurrency, formatTime } from "@/utils/common";
@@ -16,7 +16,7 @@ const RentalDetail = ({ params }: { params: { id: string } }) => {
     if (rentalId) {
       const fetchRentalDetail = async () => {
         setLoading(true);
-        const res = await motorbikeService.getMotorbikeRentalDetail(rentalId);
+        const res = await rentalService.getMotorbikeRentalDetail(rentalId);
         setLoading(false);
         setRentalDetail(res.data);
       };

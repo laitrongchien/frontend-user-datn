@@ -8,6 +8,7 @@ import Link from "next/link";
 import { paymentService } from "@/services/api/payment";
 import { formatCurrency } from "@/utils/common";
 import { setRentalData } from "@/utils/storage";
+import { motorbikeService } from "@/services/api/motorbike";
 
 const RentMotorbikeForm = ({
   motorbikeId,
@@ -21,6 +22,7 @@ const RentMotorbikeForm = ({
   const [numMotorbikes, setNumMotorbikes] = useState(1);
   const [totalPrice, setTotalPrice] = useState(0);
   const [paymentType, setPaymentType] = useState("payAll");
+  const [availableMotors, setAvailableMotors] = useState([]);
   const { user } = useAppSelector((state) => state.auth);
 
   useEffect(() => {
@@ -29,6 +31,14 @@ const RentMotorbikeForm = ({
     );
     setTotalPrice(days * numMotorbikes * motorbikePrice);
   }, [numMotorbikes, startDate, finishDate, motorbikePrice]);
+
+  useEffect(() => {
+    const fetchAllAvailableMotor = async () => {
+      const res = await motorbikeService.getAllAvailableMotor(motorbikeId);
+      setAvailableMotors(res.data);
+    };
+    fetchAllAvailableMotor();
+  }, [motorbikeId]);
 
   const handleRentMotorbike = async (event: any) => {
     event.preventDefault();
@@ -85,11 +95,13 @@ const RentMotorbikeForm = ({
         placeholder="Số lượng xe"
         type="number"
         min="1"
-        max="4"
+        max={availableMotors.length}
         value={numMotorbikes}
         onChange={(e: any) => setNumMotorbikes(e.target.value)}
       />
-      <h1 className="text-sm mt-2">Số lượng xe tối đa có thể đặt: 4</h1>
+      <h1 className="text-sm mt-2">
+        Số lượng xe sẵn có: {availableMotors.length}
+      </h1>
       <div className="my-3">
         <span>Giá thuê một ngày: </span>
         <span className="font-semibold text-primary">

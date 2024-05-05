@@ -41,16 +41,10 @@ const unlikeMotorbike = async (motorbikeId: string) => {
   return await axios.post(`/motorbike/unlike-motorbike/${motorbikeId}`);
 };
 
-const createRentalMotorbike = async (rentalData: any) => {
-  return await axios.post("motorbike/create-rental", rentalData);
-};
-
-const getMotorbikeRentalsByUser = async () => {
-  return await axios.get("motorbike/get-rentals-by-user");
-};
-
-const getMotorbikeRentalDetail = async (rentalId: string) => {
-  return await axios.get(`motorbike/get-rental-detail/${rentalId}`);
+const getAllAvailableMotor = async (motorbikeId: string) => {
+  return await axios.get(
+    `/identification/get-all-available-motor/${motorbikeId}`
+  );
 };
 
 export const motorbikeService = {
@@ -59,7 +53,5 @@ export const motorbikeService = {
   unlikeMotorbike,
   getFavoriteMotorbikes,
   getMotorbikeById,
-  createRentalMotorbike,
-  getMotorbikeRentalsByUser,
-  getMotorbikeRentalDetail,
+  getAllAvailableMotor,
 };
