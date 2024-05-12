@@ -68,10 +68,10 @@ const BookingTourForm = ({ tour }: { tour: any }) => {
         <input
           className="p-1.5 border border-gray-400 rounded-lg w-full placeholder:text-gray-600 outline-none"
           type="number"
-          min="1"
+          min={1}
           required
           value={numberPeople}
-          onChange={(e: any) => setNumberPeople(e.target.value)}
+          onChange={(e: any) => setNumberPeople(parseInt(e.target.value))}
         />
       </div>
       <div className="mt-2">

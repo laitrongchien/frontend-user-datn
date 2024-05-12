@@ -116,7 +116,7 @@ const RentalMotorbikes = () => {
         {loading ? (
           <Loading />
         ) : motorbikeRentals.length === 0 ? (
-          <div className="h-full flex-center">
+          <div className="w-full h-full flex-center">
             <span className="text-[18px] font-semibold">
               Danh sách tour đã đặt trống
             </span>

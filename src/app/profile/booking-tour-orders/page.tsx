@@ -116,7 +116,7 @@ const BookingOrders = () => {
         {loading ? (
           <Loading />
         ) : bookingTours.length === 0 ? (
-          <div className="h-full flex-center">
+          <div className="w-full h-full flex-center">
             <span className="text-[18px] font-semibold">
               Danh sách xe đã thuê trống
             </span>
