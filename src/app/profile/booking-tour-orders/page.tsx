@@ -115,6 +115,12 @@ const BookingOrders = () => {
       <div className="rounded-lg px-10 py-4 w-[calc(100vw-352px)] h-full bg-white shadow-md flex">
         {loading ? (
           <Loading />
+        ) : bookingTours.length === 0 ? (
+          <div className="h-full flex-center">
+            <span className="text-[18px] font-semibold">
+              Danh sách xe đã thuê trống
+            </span>
+          </div>
         ) : (
           <div className="w-full h-full rounded-lg shadow-sm border border-gray-200">
             <DataTable

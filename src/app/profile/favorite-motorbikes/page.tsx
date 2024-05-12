@@ -47,6 +47,12 @@ const FavoriteMotorbikes = () => {
         <div className="rounded-lg px-10 py-4 w-full h-full bg-white shadow-md">
           {loading ? (
             <Loading />
+          ) : favoriteMotorbikes.length === 0 ? (
+            <div className="h-full flex-center">
+              <span className="text-[18px] font-semibold">
+                Danh sách xe máy yêu thích trống
+              </span>
+            </div>
           ) : (
             favoriteMotorbikes.map((favoriteMotorbike: any) => (
               <div

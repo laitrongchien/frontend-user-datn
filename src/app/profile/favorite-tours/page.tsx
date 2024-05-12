@@ -43,8 +43,10 @@ const FavoriteTours = () => {
           {loading ? (
             <Loading />
           ) : favoriteTours.length === 0 ? (
-            <div className="h-[300px] flex-center">
-              <h1>Chưa có tour yêu thích</h1>
+            <div className="h-full flex-center">
+              <span className="text-[18px] font-semibold">
+                Danh sách tour yêu thích trống
+              </span>
             </div>
           ) : (
             favoriteTours.map((favoriteTour: any) => (

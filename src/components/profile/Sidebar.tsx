@@ -72,7 +72,7 @@ const Sidebar = () => {
             href={"/profile/booking-tour-orders"}
             className="flex items-center w-full"
           >
-            <p className="ml-6">Tour đã book</p>
+            <p className="ml-6">Tour đã đặt</p>
           </Link>
         </li>
         <li
