@@ -20,6 +20,7 @@ const RentMotorbikeForm = ({
   const [startDate, setStartDate] = useState(new Date());
   const [finishDate, setFinishDate] = useState(new Date());
   const [numMotorbikes, setNumMotorbikes] = useState(1);
+  const [phone, setPhone] = useState("");
   const [totalPrice, setTotalPrice] = useState(0);
   const [paymentType, setPaymentType] = useState("payAll");
   const [availableMotors, setAvailableMotors] = useState([]);
@@ -48,6 +49,7 @@ const RentMotorbikeForm = ({
     window.location.href = paymentUrl;
     const temporaryRentalData = {
       user: user._id,
+      phone: phone,
       motorbikes: [
         {
           motorbike: motorbikeId,
@@ -89,16 +91,30 @@ const RentMotorbikeForm = ({
           />
         </div>
       </div>
-      <h1 className="my-2">Số lượng</h1>
-      <input
-        className="p-1.5 border border-gray-500 rounded-lg w-full placeholder:text-gray-600 outline-none"
-        placeholder="Số lượng xe"
-        type="number"
-        min="1"
-        max={availableMotors.length}
-        value={numMotorbikes}
-        onChange={(e: any) => setNumMotorbikes(e.target.value)}
-      />
+      <div className="flex justify-between">
+        <div className="my-2 basis-[46%]">
+          <h1>SĐT liên hệ</h1>
+          <input
+            className="p-1.5 border border-gray-500 rounded-lg w-full placeholder:text-gray-600 outline-none"
+            placeholder="Số điện thoại"
+            required
+            value={phone}
+            onChange={(e: any) => setPhone(e.target.value)}
+          />
+        </div>
+        <div className="my-2 basis-[46%]">
+          <h1>Số lượng</h1>
+          <input
+            className="p-1.5 border border-gray-500 rounded-lg w-full placeholder:text-gray-600 outline-none"
+            placeholder="Số lượng xe"
+            type="number"
+            min="1"
+            max={availableMotors.length}
+            value={numMotorbikes}
+            onChange={(e: any) => setNumMotorbikes(e.target.value)}
+          />
+        </div>
+      </div>
       <h1 className="text-sm mt-2">
         Số lượng xe sẵn có: {availableMotors.length}
       </h1>

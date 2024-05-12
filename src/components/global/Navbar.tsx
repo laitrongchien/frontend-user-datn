@@ -53,16 +53,16 @@ const Navbar = () => {
           <Link href={"/motorbikes"}>Xe motor</Link>
         </li>
         <li
-          className={`nav-item ${
-            pathname.includes("/destinations") ? "active" : ""
-          }`}
-        >
-          <Link href={"/destinations"}>Điểm đến</Link>
-        </li>
-        <li
           className={`nav-item ${pathname.includes("/blogs") ? "active" : ""}`}
         >
           <Link href={"/blogs"}>Bài viết</Link>
+        </li>
+        <li
+          className={`nav-item ${
+            pathname.includes("/policies") ? "active" : ""
+          }`}
+        >
+          <Link href={"/policies"}>Chính sách</Link>
         </li>
       </ul>
       {isAuthenticated ? (

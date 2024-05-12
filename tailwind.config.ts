@@ -16,7 +16,7 @@ const config: Config = {
       colors: {
         primary: "#ff7a33",
         success: "#1abf57",
-        blue: "#03c9d7",
+        blue: "#3498db",
         error: "#dc2626",
       },
     },

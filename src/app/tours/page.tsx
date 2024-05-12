@@ -20,8 +20,8 @@ const Tour = () => {
         let response;
         setLoading(true);
         if (user)
-          response = await tourService.getAllTours(currentPage, 6, user._id);
-        else response = await tourService.getAllTours(currentPage, 6);
+          response = await tourService.getAllTours(currentPage, 4, user._id);
+        else response = await tourService.getAllTours(currentPage, 4);
         setLoading(false);
         const { tours, totalPages } = response.data;
         setTours(tours);

@@ -27,19 +27,13 @@ const SwiperNavButton = () => {
 
   return (
     <div className="w-full flex justify-between absolute top-[44%] px-2">
-      <button
-        onClick={handlePrev}
-        className={`z-10 ${isBegin ? "invisible" : ""}`}
-      >
+      <button onClick={handlePrev} className="z-10">
         <div className="w-9 h-9 flex-center rounded-full bg-white hover:bg-gray-200">
           <FaArrowLeft />
         </div>
       </button>
 
-      <button
-        onClick={handleNext}
-        className={`z-10 ${isEnd ? "invisible" : ""}`}
-      >
+      <button onClick={handleNext} className="z-10">
         <div className="w-9 h-9 flex-center rounded-full bg-white hover:bg-gray-200">
           <FaArrowRight />
         </div>
