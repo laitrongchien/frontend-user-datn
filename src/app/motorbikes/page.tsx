@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import MotorbikeCard from "@/components/card/MotorbikeCard";
 import Pagination from "@/components/global/Pagination";
 import { motorbikeService } from "@/services/api/motorbike";
@@ -16,6 +17,8 @@ const Motorbike = () => {
   const [sortOrder, setSortOrder] = useState<undefined | number>(1);
   const [loading, setLoading] = useState(false);
   const { user } = useAppSelector((state) => state.auth);
+  const searchParams = useSearchParams();
+  const typeMotorbike = searchParams.get("type") || undefined;
 
   const handleSortMotorbike = (e: any) => {
     const value = e.target.value;
@@ -65,26 +68,15 @@ const Motorbike = () => {
   useEffect(() => {
     const fetchMotorbikes = async () => {
       try {
-        let response;
         setLoading(true);
-        if (user)
-          response = await motorbikeService.getAllMotorbikes(
-            currentPage,
-            6,
-            user._id,
-            type,
-            sortField,
-            sortOrder
-          );
-        else
-          response = await motorbikeService.getAllMotorbikes(
-            currentPage,
-            6,
-            undefined,
-            type,
-            sortField,
-            sortOrder
-          );
+        const response = await motorbikeService.getAllMotorbikes(
+          currentPage,
+          6,
+          user?._id,
+          type || typeMotorbike,
+          sortField,
+          sortOrder
+        );
         setLoading(false);
         const { motorbikes, totalPages } = response.data;
         setMotorbikes(motorbikes);
@@ -95,7 +87,7 @@ const Motorbike = () => {
     };
 
     fetchMotorbikes();
-  }, [currentPage, user, type, sortField, sortOrder]);
+  }, [currentPage, user, type, sortField, sortOrder, typeMotorbike]);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);

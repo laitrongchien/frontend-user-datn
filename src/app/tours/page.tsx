@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import HorizTourCard from "@/components/card/HorizTourCard";
 import Pagination from "@/components/global/Pagination";
 import { tourService } from "@/services/api/tour";
@@ -13,15 +14,23 @@ const Tour = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(false);
   const { user } = useAppSelector((state) => state.auth);
+  const searchParams = useSearchParams();
+  const startLocation = searchParams.get("startLocation") || undefined;
+  const minDuration = searchParams.get("minDuration") || undefined;
+  const maxDuration = searchParams.get("maxDuration") || undefined;
 
   useEffect(() => {
     const fetchTours = async () => {
       try {
-        let response;
         setLoading(true);
-        if (user)
-          response = await tourService.getAllTours(currentPage, 4, user._id);
-        else response = await tourService.getAllTours(currentPage, 4);
+        const response = await tourService.getAllTours(
+          currentPage,
+          4,
+          user?._id,
+          startLocation,
+          Number(minDuration),
+          Number(maxDuration)
+        );
         setLoading(false);
         const { tours, totalPages } = response.data;
         setTours(tours);
@@ -57,7 +66,7 @@ const Tour = () => {
         <div className="w-full h-screen">
           <Loading />
         </div>
-      ) : (
+      ) : tours.length !== 0 ? (
         <div className="px-10 flex items-center justify-between flex-wrap">
           {tours.map((tour: any) => (
             <div
@@ -68,16 +77,24 @@ const Tour = () => {
             </div>
           ))}
         </div>
+      ) : (
+        <div className="h-[200px] flex-center">
+          <span className="text-[24px] font-semibold">
+            Không tìm thấy tour du lịch!
+          </span>
+        </div>
       )}
 
-      <div className="flex-center mt-6 mb-12">
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          route="/tours"
-          onPageChange={handlePageChange}
-        />
-      </div>
+      {tours.length !== 0 && (
+        <div className="flex-center mt-6 mb-12">
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            route="/tours"
+            onPageChange={handlePageChange}
+          />
+        </div>
+      )}
     </div>
   );
 };

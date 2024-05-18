@@ -1,9 +1,25 @@
 import axios from "./axios";
 
-const getAllTours = async (page: number, limit: number, userId?: string) => {
+const getAllTours = async (
+  page: number,
+  limit: number,
+  userId?: string,
+  startLocation?: string,
+  minDuration?: number,
+  maxDuration?: number
+) => {
   let url = `/tour/all?page=${page}&limit=${limit}`;
   if (userId) {
     url += `&userId=${userId}`;
+  }
+  if (startLocation) {
+    url += `&startLocation=${startLocation}`;
+  }
+  if (minDuration) {
+    url += `&minDuration=${minDuration}`;
+  }
+  if (maxDuration) {
+    url += `&maxDuration=${maxDuration}`;
   }
   const res = await axios.get(url);
   return res;

@@ -9,7 +9,7 @@ const Sidebar = () => {
   const pathname = usePathname();
   return (
     <aside>
-      <ul className="p-2 shadow-md rounded-lg w-60 bg-white text-base text-black border border-gray-200">
+      <ul className="p-2 shadow-md rounded-lg md:w-60 bg-white text-base text-black border border-gray-200">
         <li className="p-1.5 hover:bg-gray-100 rounded-md flex items-center">
           <LuUser />
           <p className="ml-2">Tài khoản</p>

@@ -2,14 +2,14 @@
 
 import ReviewCard from "@/components/card/ReviewCard";
 import Loading from "@/components/global/Loading";
-import BookingTourForm from "@/components/order/BookingTourForm";
 import { tourService } from "@/services/api/tour";
 import { reviewService } from "@/services/api/review";
 import { formatCurrency } from "@/utils/common";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { MdOutlineCheck } from "react-icons/md";
-import CreateReviewTour from "@/components/review/CreateReviewTour";
+import BookingTourForm from "@/components/tour/BookingTourForm";
+import CreateReviewTour from "@/components/tour/CreateReviewTour";
 
 const TourDetail = ({ params }: { params: { id: string } }) => {
   const [tour, setTour] = useState<any>();

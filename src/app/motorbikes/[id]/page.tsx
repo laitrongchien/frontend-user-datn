@@ -6,9 +6,9 @@ import { MdOutlineCheck } from "react-icons/md";
 import { useEffect, useState } from "react";
 import { motorbikeService } from "@/services/api/motorbike";
 import Loading from "@/components/global/Loading";
-import RentMotorbikeForm from "@/components/order/RentMotorbikeForm";
 import { reviewService } from "@/services/api/review";
-import CreateReviewMotorbike from "@/components/review/CreateReviewMotorbike";
+import RentMotorbikeForm from "@/components/motorbike/RentMotorbikeForm";
+import CreateReviewMotorbike from "@/components/motorbike/CreateReviewMotorbike";
 
 const MotorbikeDetail = ({ params }: { params: { id: string } }) => {
   const [motorbike, setMotorbike] = useState<any>();

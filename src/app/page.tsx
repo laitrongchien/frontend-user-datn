@@ -1,8 +1,9 @@
 import Link from "next/link";
-import TourSwiper from "@/components/swiper/TourSwiper";
 import Image from "next/image";
-import DestinationSwiper from "@/components/swiper/DestinationSwiper";
 import { tourService } from "@/services/api/tour";
+import TourSwiper from "@/components/swiper/TourSwiper";
+import DestinationSwiper from "@/components/swiper/DestinationSwiper";
+import SearchForm from "@/components/global/SearchForm";
 
 export default async function Home() {
   const popularTours = await (await tourService.getPopularTours()).data;
@@ -41,18 +42,20 @@ export default async function Home() {
 
   return (
     <>
-      <div className="relative">
+      <div className="relative lg:h-[calc(100vh-160px)] max-sm:h-[400px]">
         <Image
           src="https://motorbiketourexpert.com/demo/wp-content/uploads/2024/01/Northwest-Vietnam-touring.jpg"
           alt="imgCover"
           sizes="100vw"
           width={2048}
           height={1153}
-          className="w-full lg:h-[calc(100vh-66px)] max-sm:h-[400px] object-cover"
+          className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black opacity-20"></div>
+        <div className="absolute left-0 bottom-0 w-full flex justify-center">
+          <SearchForm />
+        </div>
       </div>
-      {/* <Welcome /> */}
       <div className="p-10">
         <div className="overflow-hidden mb-16 relative rounded-xl mt-6">
           <Image

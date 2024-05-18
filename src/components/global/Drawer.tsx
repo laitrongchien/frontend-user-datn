@@ -1,9 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { LuMenu } from "react-icons/lu";
-import { MdHomeFilled, MdTour } from "react-icons/md";
+import { MdHomeFilled, MdPolicy, MdTour } from "react-icons/md";
 import { FaMotorcycle } from "react-icons/fa6";
-import { FaMapMarkerAlt, FaPencilAlt } from "react-icons/fa";
+import { FaPencilAlt } from "react-icons/fa";
 import { useState } from "react";
 
 const Drawer = () => {
@@ -29,7 +29,7 @@ const Drawer = () => {
           <LuMenu size={30} />
         </label>
       </div>
-      <div className="drawer-side z-10">
+      <div className="drawer-side z-[100]">
         <label
           htmlFor="my-drawer"
           aria-label="close sidebar"
@@ -75,8 +75,8 @@ const Drawer = () => {
             onClick={closeDrawer}
           >
             <Link href={"/blogs"} className="flex items-center">
-              <FaPencilAlt size={22} />
-              <h1 className="text-lg font-semibold ml-4">BÀI VIẾT</h1>
+              <FaPencilAlt size={20} />
+              <h1 className="text-lg font-semibold ml-5">BÀI VIẾT</h1>
             </Link>
           </li>
           <li
@@ -84,7 +84,7 @@ const Drawer = () => {
             onClick={closeDrawer}
           >
             <Link href={"/policies"} className="flex items-center">
-              <FaPencilAlt size={22} />
+              <MdPolicy size={22} />
               <h1 className="text-lg font-semibold ml-4">CHÍNH SÁCH</h1>
             </Link>
           </li>

@@ -67,10 +67,6 @@ const Navbar = () => {
       </ul>
       {isAuthenticated ? (
         <div className="basis-1/4 flex items-center justify-end max-lg:basis-3/4 relative">
-          <div className="w-8 h-8 rounded-full bor bg-gray-200 mr-4 flex-center">
-            <LuBell size={20} color="#333" />
-          </div>
-
           <div
             tabIndex={0}
             role="button"
@@ -135,17 +131,17 @@ const Navbar = () => {
       ) : (
         <div className="basis-1/4 flex items-center justify-end max-lg:basis-3/4">
           <button
-            className="px-2 py-2 bg-primary text-white rounded-lg mr-4"
+            className="px-2 py-2 bg-primary text-white rounded-lg"
             onClick={() => router.push("/auth/login")}
           >
             Đăng nhập
           </button>
-          <button
+          {/* <button
             className="px-4 py-2 text-primary rounded-lg border border-primary bg-white"
             onClick={() => router.push("/auth/register")}
           >
             Đăng ký
-          </button>
+          </button> */}
         </div>
       )}
     </nav>

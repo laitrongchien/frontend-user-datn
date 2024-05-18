@@ -112,7 +112,7 @@ const BookingOrders = () => {
   };
   return (
     <ProfileLayout>
-      <div className="rounded-lg px-10 py-4 w-[calc(100vw-352px)] h-full bg-white shadow-md flex">
+      <div className="rounded-lg px-10 py-4 md:w-[calc(100vw-352px)] h-full bg-white shadow-md flex">
         {loading ? (
           <Loading />
         ) : bookingTours.length === 0 ? (
