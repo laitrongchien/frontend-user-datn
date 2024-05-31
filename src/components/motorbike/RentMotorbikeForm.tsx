@@ -18,8 +18,10 @@ const RentMotorbikeForm = ({
   motorbikePrice: number;
 }) => {
   const [startDate, setStartDate] = useState(new Date());
-  const [finishDate, setFinishDate] = useState(new Date());
-  const [numMotorbikes, setNumMotorbikes] = useState(1);
+  const [finishDate, setFinishDate] = useState(
+    new Date(startDate.getTime() + 24 * 60 * 60 * 1000)
+  );
+  const [numMotorbikes, setNumMotorbikes] = useState(0);
   const [phone, setPhone] = useState("");
   const [totalPrice, setTotalPrice] = useState(0);
   const [paymentType, setPaymentType] = useState("payAll");
@@ -85,7 +87,7 @@ const RentMotorbikeForm = ({
           <DatePicker
             showIcon
             selected={finishDate}
-            minDate={startDate}
+            minDate={new Date(startDate.getTime() + 24 * 60 * 60 * 1000)}
             onChange={(date) => date && setFinishDate(date)}
             wrapperClassName="border border-gray-200"
           />
@@ -108,16 +110,20 @@ const RentMotorbikeForm = ({
             className="p-1.5 border border-gray-500 rounded-lg w-full placeholder:text-gray-600 outline-none"
             placeholder="Số lượng xe"
             type="number"
-            min="1"
+            min="0"
             max={availableMotors.length}
             value={numMotorbikes}
-            onChange={(e: any) => setNumMotorbikes(e.target.value)}
+            onChange={(e: any) => setNumMotorbikes(parseInt(e.target.value))}
           />
         </div>
       </div>
-      <h1 className="text-sm mt-2">
+      <p className="mt-2">
+        Địa điểm nhận xe:{" "}
+        <span className="font-semibold">Số 10 Hoàn Kiếm, Hà Nội</span>
+      </p>
+      <p className="text-sm mt-2 font-semibold">
         Số lượng xe sẵn có: {availableMotors.length}
-      </h1>
+      </p>
       <div className="my-3">
         <span>Giá thuê một ngày: </span>
         <span className="font-semibold text-primary">
@@ -130,10 +136,6 @@ const RentMotorbikeForm = ({
           {formatCurrency(totalPrice)}
         </span>
       </div>
-      {/* <input type="radio" id="vnpay" value="vnpay" defaultChecked />
-      <label htmlFor="vnpay" className="ml-2">
-        Thanh toán qua VNPay
-      </label> */}
       <label
         htmlFor="payAll"
         className="flex px-4 py-2 border rounded-lg border-gray-400 justify-between"
@@ -173,6 +175,7 @@ const RentMotorbikeForm = ({
       {user ? (
         <button
           type="submit"
+          disabled={numMotorbikes === 0}
           className="w-full p-1.5 rounded-lg text-white bg-primary"
         >
           Thanh toán

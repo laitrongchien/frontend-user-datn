@@ -46,6 +46,7 @@ const BookingTourForm = ({ tour }: { tour: any }) => {
           className="p-1.5 border border-gray-400 rounded-lg w-full placeholder:text-gray-600 outline-none"
           value={phone}
           onChange={(e: any) => setPhone(e.target.value)}
+          required
         />
       </div>
       <div className="mt-2">
@@ -54,8 +55,11 @@ const BookingTourForm = ({ tour }: { tour: any }) => {
           className="p-1.5 border border-gray-400 rounded-lg w-full placeholder:text-gray-600 outline-none"
           value={startDate}
           onChange={(e: any) => setStartDate(e.target.value)}
+          required
         >
-          <option>Chọn ngày khởi hành</option>
+          <option hidden value="">
+            Chọn ngày khởi hành
+          </option>
           {tour?.startDates?.map((date: any, index: any) => (
             <option key={index} value={date}>
               {formatTime(date)}
