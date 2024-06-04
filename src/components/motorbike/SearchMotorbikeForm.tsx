@@ -1,17 +1,28 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { typeMotorOptions } from "@/constants";
 import { FaMapMarkerAlt, FaMotorcycle } from "react-icons/fa";
+import { locationService } from "@/services/api/location";
 
 const SearchMotorbikeForm = () => {
   const router = useRouter();
   const [typeMotorbike, setTypeMotorbike] = useState("");
+  const [locations, setLocations] = useState([]);
+  const [location, setLocation] = useState();
+
+  useEffect(() => {
+    const getAllLocations = async () => {
+      const res = await locationService.getAllLocations();
+      setLocations(res.data);
+    };
+    getAllLocations();
+  }, []);
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    router.push(`/motorbikes?type=${typeMotorbike}`);
+    router.push(`/motorbikes?location=${location}&type=${typeMotorbike}`);
   };
 
   return (
@@ -20,8 +31,17 @@ const SearchMotorbikeForm = () => {
       onSubmit={handleSubmit}
     >
       <div className="relative h-[50px] border border-gray-400 font-medium rounded-lg overflow-hidden">
-        <select className="w-full h-full outline-none pl-8">
-          <option selected>Số 10 Hoàn Kiếm, Hà Nội</option>
+        <select
+          className="w-full h-full outline-none pl-8"
+          value={location}
+          onChange={(e: any) => setLocation(e.target.value)}
+        >
+          <option hidden>Điểm nhận xe</option>
+          {locations.map((location: any) => (
+            <option key={location._id} value={location.address}>
+              {location.address}
+            </option>
+          ))}
         </select>
         <FaMapMarkerAlt
           className="absolute left-2 top-[14px]"
@@ -51,7 +71,7 @@ const SearchMotorbikeForm = () => {
       <button
         type="submit"
         className="h-[50px] border border-primary text-primary hover:text-white hover:bg-primary font-medium rounded-lg"
-        disabled={!typeMotorbike}
+        disabled={!typeMotorbike || !location}
       >
         Tìm kiếm
       </button>

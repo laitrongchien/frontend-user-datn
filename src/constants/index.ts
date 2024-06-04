@@ -2,6 +2,8 @@ export const colors = {
   primary: "#ff7a33",
 };
 
+export const DEFAULT_LOCATION = "Số 10, Hoàn Kiếm, Hà Nội";
+
 export const startLocationOptions = [
   {
     label: "Hà Nội",

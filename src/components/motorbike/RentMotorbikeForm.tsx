@@ -9,6 +9,8 @@ import { paymentService } from "@/services/api/payment";
 import { formatCurrency } from "@/utils/common";
 import { setRentalData } from "@/utils/storage";
 import { motorbikeService } from "@/services/api/motorbike";
+import { DEFAULT_LOCATION } from "@/constants";
+import { locationService } from "@/services/api/location";
 
 const RentMotorbikeForm = ({
   motorbikeId,
@@ -26,6 +28,8 @@ const RentMotorbikeForm = ({
   const [totalPrice, setTotalPrice] = useState(0);
   const [paymentType, setPaymentType] = useState("payAll");
   const [availableMotors, setAvailableMotors] = useState([]);
+  const [location, setLocation] = useState(DEFAULT_LOCATION);
+  const [locations, setLocations] = useState([]);
   const { user } = useAppSelector((state) => state.auth);
 
   useEffect(() => {
@@ -37,11 +41,22 @@ const RentMotorbikeForm = ({
 
   useEffect(() => {
     const fetchAllAvailableMotor = async () => {
-      const res = await motorbikeService.getAllAvailableMotor(motorbikeId);
+      const res = await motorbikeService.getAllAvailableMotor(
+        motorbikeId,
+        location
+      );
       setAvailableMotors(res.data);
     };
     fetchAllAvailableMotor();
-  }, [motorbikeId]);
+  }, [location, motorbikeId]);
+
+  useEffect(() => {
+    const getAllLocations = async () => {
+      const res = await locationService.getAllLocations();
+      setLocations(res.data);
+    };
+    getAllLocations();
+  }, []);
 
   const handleRentMotorbike = async (event: any) => {
     event.preventDefault();
@@ -60,6 +75,7 @@ const RentMotorbikeForm = ({
           numMotorbikes: numMotorbikes,
         },
       ],
+      location: location,
       paymentType: paymentType,
       totalPrice: totalPrice,
     };
@@ -93,6 +109,21 @@ const RentMotorbikeForm = ({
           />
         </div>
       </div>
+      <div>
+        <span>Địa điểm nhận xe</span>
+        <select
+          className="p-1.5 border border-gray-500 rounded-lg outline-none w-full"
+          required
+          value={location}
+          onChange={(e: any) => setLocation(e.target.value)}
+        >
+          {locations.map((location: any) => (
+            <option key={location._id} value={location.address}>
+              {location.address}
+            </option>
+          ))}
+        </select>
+      </div>
       <div className="flex justify-between">
         <div className="my-2 basis-[46%]">
           <h1>SĐT liên hệ</h1>
@@ -117,10 +148,7 @@ const RentMotorbikeForm = ({
           />
         </div>
       </div>
-      <p className="mt-2">
-        Địa điểm nhận xe:{" "}
-        <span className="font-semibold">Số 10 Hoàn Kiếm, Hà Nội</span>
-      </p>
+
       <p className="text-sm mt-2 font-semibold">
         Số lượng xe sẵn có: {availableMotors.length}
       </p>

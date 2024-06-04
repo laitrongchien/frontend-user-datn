@@ -45,7 +45,7 @@ const MotorbikeDetail = ({ params }: { params: { id: string } }) => {
 
   return (
     <div>
-      <div className="flex relative p-10">
+      <div className="flex relative px-10 py-[30px]">
         <div className="basis-[64%] px-10">
           {motorbike && (
             <Image
@@ -141,7 +141,7 @@ const MotorbikeDetail = ({ params }: { params: { id: string } }) => {
         </div>
 
         <div className="basis-[36%] relative">
-          <div className="w-full top-[106px] right-0 sticky">
+          <div className="w-full top-[90px] right-0 sticky">
             <RentMotorbikeForm
               motorbikeId={motorbikeId}
               motorbikePrice={motorbike?.price}
