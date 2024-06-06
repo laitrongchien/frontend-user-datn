@@ -68,7 +68,7 @@ export default async function Home() {
           <div className="absolute inset-0 bg-black opacity-40"></div>
           <div className="absolute top-[36%] left-20">
             <h1 className="font-sans font-extrabold text-4xl text-white z-10 mb-8">
-              THUÊ XE MOTOR
+              THUÊ XE MÁY
             </h1>
             <Link
               href={"/motorbikes"}
@@ -90,7 +90,7 @@ export default async function Home() {
 
           <div className="absolute top-[36%] left-20">
             <h1 className="font-sans font-extrabold text-4xl text-white z-10 mb-8">
-              TOUR XE MOTOR
+              TOUR XE MÁY
             </h1>
             <Link
               href={"/tours"}

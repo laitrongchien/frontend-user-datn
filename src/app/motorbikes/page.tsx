@@ -104,7 +104,7 @@ const Motorbike = () => {
       >
         <div className="absolute inset-0 bg-black opacity-40"></div>
         <h1 className="font-sans font-extrabold text-5xl text-white z-10">
-          THUÊ XE MOTOR
+          THUÊ XE MÁY
         </h1>
       </div>
       <div className="px-10 mt-8">

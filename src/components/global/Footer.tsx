@@ -8,10 +8,10 @@ const Footer = () => {
           Trang chủ
         </Link>
         <Link href={"/tours"} className="text-white hover:text-primary">
-          Tour xe motor
+          Tour xe máy
         </Link>
         <Link href={"/motorbikes"} className="text-white hover:text-primary">
-          Xe motor
+          Thuê xe
         </Link>
         <Link href={"/blogs"} className="text-white hover:text-primary">
           Bài viết

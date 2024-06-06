@@ -60,7 +60,7 @@ const Tour = () => {
         <h1 className="font-sans font-extrabold text-5xl text-white z-10">
           KHÁM PHÁ VIETNAM
         </h1>
-        <h3 className="text-2xl text-white mt-8 z-10">Tour motor trọn gói</h3>
+        <h3 className="text-2xl text-white mt-8 z-10">Tour xe máy trọn gói</h3>
       </div>
       {loading ? (
         <div className="w-full h-screen">
