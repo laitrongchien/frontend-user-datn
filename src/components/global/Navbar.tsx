@@ -11,6 +11,7 @@ import { IoChatboxEllipsesOutline } from "react-icons/io5";
 import { logout } from "@/store/features/authSlice";
 import Drawer from "./Drawer";
 import Chatbox from "./ChatBox";
+import { colors } from "@/constants";
 
 const Navbar = () => {
   const router = useRouter();
@@ -71,17 +72,22 @@ const Navbar = () => {
         >
           <Link href={"/policies"}>Chính sách</Link>
         </li>
-        <li
-          className={`nav-item ${
-            pathname.includes("/schedule") ? "active" : ""
-          }`}
-        >
-          <Link href={"/schedule"}>Lịch trình</Link>
-        </li>
+        {isAuthenticated && (
+          <li
+            className={`nav-item ${
+              pathname.includes("/create-schedule") ? "active" : ""
+            }`}
+          >
+            <Link href={"/create-schedule"}>Tạo lịch trình</Link>
+          </li>
+        )}
       </ul>
       <div className="basis-[20%] flex items-center gap-4 justify-end max-lg:basis-3/4 relative">
         <button onClick={toggleChatBox}>
-          <IoChatboxEllipsesOutline size={24} />
+          <IoChatboxEllipsesOutline
+            size={24}
+            color={isChatBoxOpen ? colors.primary : colors.black}
+          />
         </button>
         {isAuthenticated ? (
           <>
@@ -135,7 +141,7 @@ const Navbar = () => {
                   onClick={toggleDropdown}
                 >
                   <LuMap />
-                  <p className="ml-2">Chuyến đi</p>
+                  <p className="ml-2">Lịch trình</p>
                 </Link>
               </li>
               <li className="p-1 hover:bg-gray-100 rounded-md">
@@ -155,7 +161,7 @@ const Navbar = () => {
           </button>
         )}
       </div>
-      {isChatBoxOpen && <Chatbox />}
+      {isChatBoxOpen && <Chatbox toggleChatBox={toggleChatBox} />}
     </nav>
   );
 };

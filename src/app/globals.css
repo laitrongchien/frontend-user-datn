@@ -55,6 +55,10 @@ textarea {
   background: #888;
 }
 
+.hidden-scrollbar::-webkit-scrollbar {
+  width: 0px;
+}
+
 .react-datepicker-wrapper,
 .react-datepicker__input-container,
 .react-datepicker__input-container input {
