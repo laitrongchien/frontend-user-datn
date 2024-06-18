@@ -151,14 +151,14 @@ const TourDetail = ({ params }: { params: { id: string } }) => {
           <div className="w-full h-[400px]">
             <Loading />
           </div>
-        ) : reviews.length === 0 ? (
+        ) : reviews?.length === 0 ? (
           <h1>Chưa có đánh giá!</h1>
         ) : (
           reviews.map((review: any) => (
             <ReviewCard key={review._id} review={review} />
           ))
         )}
-        {reviews.length !== 0 && (
+        {reviews?.length !== 0 && (
           <div className="flex-center mt-6 mb-12">
             <Pagination
               currentPage={currentPage}
