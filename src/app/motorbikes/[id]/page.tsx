@@ -48,10 +48,10 @@ const MotorbikeDetail = ({ params }: { params: { id: string } }) => {
           currentPage,
           reviewsPerMotor
         );
-        setLoadingReviews(false);
         const { motorReviews, totalPages } = reviewRes.data;
         setReviews(motorReviews);
         setTotalPages(totalPages);
+        setLoadingReviews(false);
       };
       fetchReviews();
     }
