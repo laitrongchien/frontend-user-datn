@@ -1,11 +1,13 @@
 "use client";
 
+import Link from "next/link";
+import Image from "next/image";
 import Loading from "@/components/global/Loading";
 import { rentalService } from "@/services/api/rental";
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import { formatCurrency, formatTime } from "@/utils/common";
 import ProfileLayout from "@/components/profile/ProfileLayout";
+import { MdArrowBackIos } from "react-icons/md";
 
 const RentalDetail = ({ params }: { params: { id: string } }) => {
   const [rentalDetail, setRentalDetail] = useState<any>();
@@ -31,6 +33,13 @@ const RentalDetail = ({ params }: { params: { id: string } }) => {
           <Loading />
         ) : (
           <div>
+            <Link
+              href={"/profile/rental-motorbike-orders"}
+              className="flex items-center gap-2"
+            >
+              <MdArrowBackIos />
+              <span>Quay lại</span>
+            </Link>
             <div className="border-b border-gray-200 pb-6">
               <h1 className="text-lg font-semibold">
                 Chi tiết đơn thuê xe {rentalDetail?._id}

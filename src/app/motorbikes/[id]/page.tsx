@@ -9,34 +9,59 @@ import Loading from "@/components/global/Loading";
 import { reviewService } from "@/services/api/review";
 import RentMotorbikeForm from "@/components/motorbike/RentMotorbikeForm";
 import CreateReviewMotorbike from "@/components/motorbike/CreateReviewMotorbike";
+import { REVIEWS_PER_MOTOR } from "@/constants";
+import Pagination from "@/components/global/Pagination";
 
 const MotorbikeDetail = ({ params }: { params: { id: string } }) => {
   const [motorbike, setMotorbike] = useState<any>();
   const [reviews, setReviews] = useState<any[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const reviewsPerMotor = REVIEWS_PER_MOTOR;
+  const [loadingMotor, setLoadingMotor] = useState(false);
+  const [loadingReviews, setLoadingReviews] = useState(false);
 
   const createReview = (newReview: any) => {
     setReviews([newReview, ...reviews]);
   };
 
   const motorbikeId = params.id;
+
   useEffect(() => {
     if (motorbikeId) {
       const fetchMotorbike = async () => {
-        setLoading(true);
+        setLoadingMotor(true);
         const res = await motorbikeService.getMotorbikeById(motorbikeId);
-        const reviewRes = await reviewService.getReviewsByMotorbike(
-          motorbikeId
-        );
-        setLoading(false);
+        setLoadingMotor(false);
         setMotorbike(res.data);
-        setReviews(reviewRes.data);
       };
       fetchMotorbike();
     }
   }, [motorbikeId]);
 
-  if (loading)
+  useEffect(() => {
+    if (motorbikeId) {
+      const fetchReviews = async () => {
+        setLoadingReviews(true);
+        const reviewRes = await reviewService.getReviewsByMotorbike(
+          motorbikeId,
+          currentPage,
+          reviewsPerMotor
+        );
+        setLoadingReviews(false);
+        const { motorReviews, totalPages } = reviewRes.data;
+        setReviews(motorReviews);
+        setTotalPages(totalPages);
+      };
+      fetchReviews();
+    }
+  }, [currentPage, motorbikeId, reviewsPerMotor]);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
+  if (loadingMotor)
     return (
       <div className="w-full h-[calc(100vh-66px)]">
         <Loading />
@@ -63,7 +88,6 @@ const MotorbikeDetail = ({ params }: { params: { id: string } }) => {
             <h1 className="text-lg font-semibold">Tổng quan</h1>
             <p className="mt-2">{motorbike?.description}</p>
             <h1 className="text-lg font-semibold mt-4">Thông số</h1>
-            {/* <p className="py-2">Loại xe: Xe ga</p> */}
             <p className="py-2">Phân khối: {motorbike?.engine} cc</p>
             <p className="py-2">Khối lượng: {motorbike?.weight} kg</p>
             <p className="py-2">Chiều cao yên: {motorbike?.height} mm</p>
@@ -121,17 +145,26 @@ const MotorbikeDetail = ({ params }: { params: { id: string } }) => {
             </div>
           </div>
           <div className="mt-6">
-            <h1 className="text-lg font-semibold">
-              Đánh giá gần nhất từ khách hàng
-            </h1>
-            {reviews.length === 0 ? (
+            <h1 className="text-lg font-semibold">Đánh giá từ khách hàng</h1>
+            {loadingReviews ? (
+              <div className="w-full h-[400px]">
+                <Loading />
+              </div>
+            ) : reviews.length === 0 ? (
               <h1>Chưa có đánh giá!</h1>
             ) : (
-              reviews
-                .slice(0, 5)
-                .map((review: any) => (
-                  <ReviewCard key={review._id} review={review} />
-                ))
+              reviews.map((review: any) => (
+                <ReviewCard key={review._id} review={review} />
+              ))
+            )}
+            {reviews.length !== 0 && (
+              <div className="flex-center mt-6 mb-12">
+                <Pagination
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onPageChange={handlePageChange}
+                />
+              </div>
             )}
             <CreateReviewMotorbike
               motorbikeId={motorbikeId}

@@ -1,41 +1,68 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import { MdOutlineCheck } from "react-icons/md";
 import ReviewCard from "@/components/card/ReviewCard";
 import Loading from "@/components/global/Loading";
 import { tourService } from "@/services/api/tour";
 import { reviewService } from "@/services/api/review";
 import { formatCurrency } from "@/utils/common";
-import Image from "next/image";
-import { useEffect, useState } from "react";
-import { MdOutlineCheck } from "react-icons/md";
 import BookingTourForm from "@/components/tour/BookingTourForm";
 import CreateReviewTour from "@/components/tour/CreateReviewTour";
+import { REVIEWS_PER_TOUR } from "@/constants";
+import Pagination from "@/components/global/Pagination";
 
 const TourDetail = ({ params }: { params: { id: string } }) => {
   const [tour, setTour] = useState<any>();
   const [reviews, setReviews] = useState<any[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const reviewsPerTour = REVIEWS_PER_TOUR;
+  const [loadingTour, setLoadingTour] = useState(false);
+  const [loadingReviews, setLoadingReviews] = useState(false);
 
   const createReview = (newReview: any) => {
     setReviews([newReview, ...reviews]);
   };
 
   const tourId = params.id;
+
   useEffect(() => {
     if (tourId) {
       const fetchTour = async () => {
-        setLoading(true);
+        setLoadingTour(true);
         const res = await tourService.getTourById(tourId);
-        const reviewRes = await reviewService.getReviewsByTour(tourId);
-        setLoading(false);
         setTour(res.data);
-        setReviews(reviewRes.data);
+        setLoadingTour(false);
       };
       fetchTour();
     }
   }, [tourId]);
 
-  if (loading)
+  useEffect(() => {
+    if (tourId) {
+      const fetchReviews = async () => {
+        setLoadingReviews(true);
+        const reviewRes = await reviewService.getReviewsByTour(
+          tourId,
+          currentPage,
+          reviewsPerTour
+        );
+        setLoadingReviews(false);
+        const { tourReviews, totalPages } = reviewRes.data;
+        setReviews(tourReviews);
+        setTotalPages(totalPages);
+      };
+      fetchReviews();
+    }
+  }, [currentPage, reviewsPerTour, tourId]);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
+  if (loadingTour)
     return (
       <div className="w-full h-[calc(100vh-66px)]">
         <Loading />
@@ -119,17 +146,26 @@ const TourDetail = ({ params }: { params: { id: string } }) => {
         </div>
       </div>
       <div className="mt-6">
-        <h1 className="text-lg font-semibold">
-          Đánh giá gần nhất từ khách hàng
-        </h1>
-        {reviews.length === 0 ? (
+        <h1 className="text-lg font-semibold">Đánh giá từ khách hàng</h1>
+        {loadingReviews ? (
+          <div className="w-full h-[400px]">
+            <Loading />
+          </div>
+        ) : reviews.length === 0 ? (
           <h1>Chưa có đánh giá!</h1>
         ) : (
-          reviews
-            .slice(0, 5)
-            .map((review: any) => (
-              <ReviewCard key={review._id} review={review} />
-            ))
+          reviews.map((review: any) => (
+            <ReviewCard key={review._id} review={review} />
+          ))
+        )}
+        {reviews.length !== 0 && (
+          <div className="flex-center mt-6 mb-12">
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
+            />
+          </div>
         )}
         <CreateReviewTour tourId={tourId} createReview={createReview} />
       </div>

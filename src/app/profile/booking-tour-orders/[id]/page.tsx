@@ -1,7 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import Image from "next/image";
+import { MdArrowBackIos } from "react-icons/md";
 import { formatCurrency, formatTime } from "@/utils/common";
 import { bookingTourService } from "@/services/api/booking";
 import Loading from "@/components/global/Loading";
@@ -31,6 +33,13 @@ const TourBookingDetail = ({ params }: { params: { id: string } }) => {
           <Loading />
         ) : (
           <div>
+            <Link
+              href={"/profile/booking-tour-orders"}
+              className="flex items-center gap-2"
+            >
+              <MdArrowBackIos />
+              <span>Quay lại</span>
+            </Link>
             <div className="border-b border-gray-200 pb-6">
               <h1 className="text-lg font-semibold">
                 Chi tiết đơn đặt tour {bookingTourId}
