@@ -43,7 +43,7 @@ const Navbar = () => {
         </Link>
         <Drawer />
       </div>
-      <ul className="flex items-center justify-around text-gray-700 font-semibold basis-[55%] max-lg:hidden">
+      <ul className="flex items-center gap-[60px] text-gray-700 font-semibold basis-[55%] max-lg:hidden">
         <li className={`nav-item ${pathname === "/" ? "active" : ""}`}>
           <Link href={"/"}>Trang chủ</Link>
         </li>
@@ -60,11 +60,11 @@ const Navbar = () => {
         >
           <Link href={"/motorbikes"}>Thuê xe</Link>
         </li>
-        <li
+        {/* <li
           className={`nav-item ${pathname.includes("/blogs") ? "active" : ""}`}
         >
           <Link href={"/blogs"}>Bài viết</Link>
-        </li>
+        </li> */}
         <li
           className={`nav-item ${
             pathname.includes("/policies") ? "active" : ""

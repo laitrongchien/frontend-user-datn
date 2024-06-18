@@ -91,7 +91,7 @@ const Sidebar = () => {
         </li>
         <li
           className={`p-1.5 hover:bg-gray-100 flex items-center rounded-md ${
-            pathname === "/profile/self-trip"
+            pathname.includes("/profile/self-trip")
               ? "text-primary font-semibold bg-gray-100"
               : ""
           }`}
@@ -101,7 +101,7 @@ const Sidebar = () => {
             href={"/profile/self-trip"}
             className="flex items-center w-full"
           >
-            <p className="ml-2">Chuyến đi</p>
+            <p className="ml-2">Lịch trình</p>
           </Link>
         </li>
       </ul>

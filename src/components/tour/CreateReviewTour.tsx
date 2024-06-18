@@ -4,6 +4,7 @@ import { useState } from "react";
 import Modal from "../global/Modal";
 import { reviewService } from "@/services/api/review";
 import { useAppSelector } from "@/store/hooks";
+import { toast } from "react-toastify";
 
 const CreateReviewTour = ({
   tourId,
@@ -18,12 +19,17 @@ const CreateReviewTour = ({
 
   const handleRating = async (e: any) => {
     e.preventDefault();
-    setRating(5);
-    setContent("");
-    const reviewTourData = { user: user._id, tour: tourId, rating, content };
-    const res = await reviewService.createReviewTour(reviewTourData);
-    createReview(res.data);
-    (document.getElementById("my_modal_2") as HTMLDialogElement)?.close();
+    try {
+      setRating(5);
+      setContent("");
+      const reviewTourData = { user: user._id, tour: tourId, rating, content };
+      const res = await reviewService.createReviewTour(reviewTourData);
+      createReview(res.data);
+      (document.getElementById("my_modal_2") as HTMLDialogElement)?.close();
+    } catch (err) {
+      (document.getElementById("my_modal_2") as HTMLDialogElement)?.close();
+      toast.error("Bạn chỉ có thể đánh giá tour một lần");
+    }
   };
 
   const renderStars = () => {

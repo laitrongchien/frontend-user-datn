@@ -5,6 +5,10 @@ export const colors = {
 
 export const DEFAULT_LOCATION = "Số 10, Hoàn Kiếm, Hà Nội";
 
+export const REVIEWS_PER_TOUR = 5;
+
+export const REVIEWS_PER_MOTOR = 5;
+
 export const startLocationOptions = [
   {
     label: "Hà Nội",

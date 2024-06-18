@@ -4,6 +4,7 @@ import { useState } from "react";
 import Modal from "../global/Modal";
 import { reviewService } from "@/services/api/review";
 import { useAppSelector } from "@/store/hooks";
+import { toast } from "react-toastify";
 
 const CreateReviewMotorbike = ({
   motorbikeId,
@@ -18,17 +19,24 @@ const CreateReviewMotorbike = ({
 
   const handleRating = async (e: any) => {
     e.preventDefault();
-    setRating(5);
-    setContent("");
-    const reviewMotorbikeData = {
-      user: user._id,
-      motorbike: motorbikeId,
-      rating,
-      content,
-    };
-    const res = await reviewService.createReviewMotorbike(reviewMotorbikeData);
-    createReview(res.data);
-    (document.getElementById("my_modal_2") as HTMLDialogElement)?.close();
+    try {
+      setRating(5);
+      setContent("");
+      const reviewMotorbikeData = {
+        user: user._id,
+        motorbike: motorbikeId,
+        rating,
+        content,
+      };
+      const res = await reviewService.createReviewMotorbike(
+        reviewMotorbikeData
+      );
+      createReview(res.data);
+      (document.getElementById("my_modal_2") as HTMLDialogElement)?.close();
+    } catch (err) {
+      (document.getElementById("my_modal_2") as HTMLDialogElement)?.close();
+      toast.error("Bạn chỉ có thể đánh giá xe một lần");
+    }
   };
 
   const renderStars = () => {
@@ -77,7 +85,10 @@ const CreateReviewMotorbike = ({
             />
           </div>
           <div className="flex justify-end">
-            <button className="mr-4 p-2 border border-gray-200 rounded-lg bg-primary text-white">
+            <button
+              type="submit"
+              className="mr-4 p-2 border border-gray-200 rounded-lg bg-primary text-white"
+            >
               Xác nhận
             </button>
             <button
