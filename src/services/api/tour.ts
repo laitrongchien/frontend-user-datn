@@ -29,6 +29,18 @@ const getTourById = async (id: string) => {
   return await axios.get(`/tour/get-tour/${id}`);
 };
 
+const createSelfTour = async (selfTourData: any) => {
+  return await axios.post("/tour/create-self-tour", selfTourData);
+};
+
+const getAllSelfTours = async () => {
+  return await axios.get("/tour/all-self-tours");
+};
+
+const getSelfTourById = async (selfTourId: string) => {
+  return await axios.get(`/tour/get-self-tour/${selfTourId}`);
+};
+
 const getPopularTours = async () => {
   return await axios.get("/tour/popular-tours");
 };
@@ -52,4 +64,7 @@ export const tourService = {
   likeTour,
   unlikeTour,
   getTourById,
+  createSelfTour,
+  getAllSelfTours,
+  getSelfTourById,
 };

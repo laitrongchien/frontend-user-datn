@@ -11,12 +11,24 @@ const createReviewMotorbike = async (reviewMotorbikeData: any) => {
   );
 };
 
-const getReviewsByTour = async (tourId: string) => {
-  return await axios.get(`review/get-reviews-by-tour/${tourId}`);
+const getReviewsByTour = async (
+  tourId: string,
+  page: number,
+  limit: number
+) => {
+  return await axios.get(
+    `review/get-reviews-by-tour/${tourId}?page=${page}&limit=${limit}`
+  );
 };
 
-const getReviewsByMotorbike = async (motorbikeId: string) => {
-  return await axios.get(`review/get-reviews-by-motorbike/${motorbikeId}`);
+const getReviewsByMotorbike = async (
+  motorbikeId: string,
+  page: number,
+  limit: number
+) => {
+  return await axios.get(
+    `review/get-reviews-by-motorbike/${motorbikeId}?page=${page}&limit=${limit}`
+  );
 };
 
 export const reviewService = {
