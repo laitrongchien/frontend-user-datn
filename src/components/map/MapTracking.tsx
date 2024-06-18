@@ -69,7 +69,7 @@ const MapTracking = ({
   const [route, setRoute] = useState<FeatureCollection | null>(null);
   const [distance, setDistance] = useState<number | null>(null);
   const [duration, setDuration] = useState<number | null>(null);
-  const [midpoint, setMidpoint] = useState<[number, number] | null>(null);
+  const [midpoint, setMidpoint] = useState<any | null>(null);
 
   useEffect(() => {
     const getRoute = async () => {
@@ -101,7 +101,7 @@ const MapTracking = ({
         ],
       };
 
-      const bounds = coordinates.reduce(
+      const bounds: any = coordinates.reduce(
         (acc: any, coord: any) => {
           return [
             [Math.min(acc[0][0], coord[0]), Math.min(acc[0][1], coord[1])],
