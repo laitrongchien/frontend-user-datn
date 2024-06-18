@@ -153,7 +153,7 @@ const MotorbikeDetail = ({ params }: { params: { id: string } }) => {
             ) : reviews?.length === 0 ? (
               <h1>Chưa có đánh giá!</h1>
             ) : (
-              reviews.map((review: any) => (
+              reviews?.map((review: any) => (
                 <ReviewCard key={review._id} review={review} />
               ))
             )}
