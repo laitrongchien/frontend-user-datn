@@ -49,9 +49,10 @@ const TourDetail = ({ params }: { params: { id: string } }) => {
           currentPage,
           reviewsPerTour
         );
+        console.log(reviewRes);
         setLoadingReviews(false);
         const { tourReviews, totalPages } = reviewRes.data;
-        console.log(tourReviews);
+
         setReviews(tourReviews);
         setTotalPages(totalPages);
       };
