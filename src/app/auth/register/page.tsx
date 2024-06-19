@@ -48,9 +48,9 @@ const Register = () => {
   };
 
   return (
-    <div className="w-full text-black flex-center py-4 bg-[url('https://res.cloudinary.com/dufuwsrue/image/upload/v1715966233/rwd_img_wide_001_xigkl2.jpg')] bg-no-repeat bg-cover bg-center">
+    <div className="w-full text-black flex-center px-6 py-4 bg-[url('https://res.cloudinary.com/dufuwsrue/image/upload/v1715966233/rwd_img_wide_001_xigkl2.jpg')] bg-no-repeat bg-cover bg-center">
       <div className="absolute inset-0 bg-black opacity-20"></div>
-      <div className="w-[340px] md:w-[400px] bg-white shadow py-4 px-8 rounded-xl z-10">
+      <div className="w-full md:w-[400px] bg-white shadow py-4 px-8 rounded-xl z-10">
         <h1 className="text-2xl font-semibold text-center text-gray-900 mb-4">
           Đăng ký
         </h1>

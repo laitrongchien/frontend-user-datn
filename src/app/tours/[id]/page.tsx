@@ -49,9 +49,7 @@ const TourDetail = ({ params }: { params: { id: string } }) => {
           currentPage,
           reviewsPerTour
         );
-        console.log(reviewRes);
         const { tourReviews, totalPages } = reviewRes.data;
-
         setReviews(tourReviews);
         setTotalPages(totalPages);
         setLoadingReviews(false);
@@ -71,7 +69,7 @@ const TourDetail = ({ params }: { params: { id: string } }) => {
       </div>
     );
   return (
-    <div className="lg:px-32 py-10 px-6">
+    <div className="lg:px-32 md:px-10 px-6 py-10">
       <h1 className="text-3xl font-semibold text-primary">{tour?.name}</h1>
       <div className="p-4 border border-gray-300 rounded-md mb-8 mt-6 bg-base-200">
         <p className="py-1">

@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Policy = () => {
   return (
-    <div>
+    <>
       <div
         className="relative bg-center bg-cover w-full h-[calc(100vh-66px)] p-6 flex flex-col justify-center"
         style={{
@@ -15,7 +15,7 @@ const Policy = () => {
           CHÍNH SÁCH
         </h1>
       </div>
-      <div className="px-20 py-10">
+      <div className="px-6 md:px-20 py-10">
         <div>
           <span className="font-semibold text-[20px]">Thủ tục thuê xe</span>
           <Image
@@ -118,7 +118,7 @@ const Policy = () => {
           </ul>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

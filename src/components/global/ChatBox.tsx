@@ -77,7 +77,7 @@ const Chatbox = ({ toggleChatBox }: { toggleChatBox: () => void }) => {
   };
 
   return (
-    <div className="absolute top-full right-0 w-[420px] h-[calc(100vh-66px)] bg-white border border-slate-300 shadow-md">
+    <div className="absolute top-full right-0 w-[420px] max-[420px]:w-full h-[calc(100vh-66px)] bg-white border border-slate-300 shadow-md">
       <div className="px-4 py-2 border-b border-gray-300 flex justify-between">
         <span className="font-semibold">Chatbot</span>
         <div className="flex gap-2">

@@ -26,7 +26,7 @@ const SelfTour = () => {
       const res = await tourService.getAllSelfTours();
       const myEvents = res.data.map((selfTour: any) => ({
         id: selfTour._id,
-        title: selfTour.name,
+        title: "Lịch trình",
         start: new Date(selfTour.startDate),
         end: new Date(selfTour.endDate),
       }));

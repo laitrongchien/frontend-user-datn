@@ -56,7 +56,7 @@ export default async function Home() {
           <SearchForm />
         </div>
       </div>
-      <div className="p-10">
+      <div className="p-6 md:p-10">
         <div className="overflow-hidden mb-16 relative rounded-xl mt-6">
           <Image
             src="https://rentabikevn.com/wp-content/uploads/2023/03/Rentabike-Vietnam-Honda-CB500x-Front-left-2048x1153.jpg"

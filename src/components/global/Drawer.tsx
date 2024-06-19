@@ -70,7 +70,7 @@ const Drawer = () => {
               <h1 className="text-lg font-semibold ml-4">XE MOTOR</h1>
             </Link>
           </li>
-          <li
+          {/* <li
             className="py-4 hover:bg-gray-200 rounded-lg"
             onClick={closeDrawer}
           >
@@ -78,7 +78,7 @@ const Drawer = () => {
               <FaPencilAlt size={20} />
               <h1 className="text-lg font-semibold ml-5">BÀI VIẾT</h1>
             </Link>
-          </li>
+          </li> */}
           <li
             className="py-4 hover:bg-gray-200 rounded-lg"
             onClick={closeDrawer}

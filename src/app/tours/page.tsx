@@ -67,7 +67,7 @@ const Tour = () => {
           <Loading />
         </div>
       ) : tours.length !== 0 ? (
-        <div className="px-10 flex items-center justify-between flex-wrap">
+        <div className="px-6 md:px-10 flex items-center justify-between flex-wrap">
           {tours.map((tour: any) => (
             <div
               key={tour._id}

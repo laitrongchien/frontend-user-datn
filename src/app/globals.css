@@ -72,6 +72,11 @@ textarea {
   border-radius: 8px;
 }
 
+.rbc-toolbar .rtc-btn-group {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .nav-item {
   @apply inline-block hover:text-primary hover:border-b-2 hover:border-primary;
 }

@@ -35,8 +35,8 @@ const ProfileInfo = () => {
 
   return (
     <ProfileLayout>
-      <div className="rounded-lg p-10 w-full bg-white shadow-md flex">
-        <div className="relative h-[120px]">
+      <div className="rounded-lg p-10 w-full bg-white shadow-md flex max-md:flex-col gap-8">
+        <div className="relative w-[120px] h-[120px]">
           <Image
             src={imagePreview || user?.avatar}
             alt="Avatar"
@@ -59,7 +59,7 @@ const ProfileInfo = () => {
             onChange={handleImageChange}
           />
         </div>
-        <div className="w-80 ml-8">
+        <div className="w-full md:w-80">
           <div className="mb-4">
             <label className="block text-gray-900">Tên của bạn</label>
             <input

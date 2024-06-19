@@ -40,7 +40,7 @@ const Sidebar = () => {
             href={"/profile/favorite-tours"}
             className="flex items-center w-full"
           >
-            <p className="ml-6">Tour xe motor</p>
+            <p className="ml-6">Tour xe máy</p>
           </Link>
         </li>
         <li
@@ -54,7 +54,7 @@ const Sidebar = () => {
             href={"/profile/favorite-motorbikes"}
             className="flex items-center w-full"
           >
-            <p className="ml-6">Xe motor</p>
+            <p className="ml-6">Xe máy</p>
           </Link>
         </li>
         <li className="p-1.5 hover:bg-gray-100 rounded-md flex items-center">
@@ -86,7 +86,7 @@ const Sidebar = () => {
             href={"/profile/rental-motorbike-orders"}
             className="flex items-center w-full"
           >
-            <p className="ml-6">Đơn thuê xe motor</p>
+            <p className="ml-6">Đơn thuê xe máy</p>
           </Link>
         </li>
         <li

@@ -107,7 +107,7 @@ const Motorbike = () => {
           THUÊ XE MÁY
         </h1>
       </div>
-      <div className="px-10 mt-8">
+      <div className="px-6 md:px-10 mt-8 flex gap-x-8 gap-y-4 max-md:flex-col">
         <select
           className="p-1 border border-primary outline-none rounded-md w-60"
           onChange={handleSortMotorbike}
@@ -118,10 +118,10 @@ const Motorbike = () => {
           <option value="decrease-rating">Đánh giá cao đến thấp</option>
         </select>
         <select
-          className="p-1 border border-primary outline-none rounded-md w-60 ml-8"
+          className="p-1 border border-primary outline-none rounded-md w-60"
           onChange={handleFilterType}
         >
-          <option value="all">Tất cả</option>
+          <option value="all">Phân loại</option>
           <option value="semi-automatic">Xe số</option>
           <option value="automatic">Xe ga</option>
           <option value="manual">Xe tay côn</option>
@@ -132,7 +132,7 @@ const Motorbike = () => {
           <Loading />
         </div>
       ) : (
-        <div className="px-10 flex items-center justify-between flex-wrap mt-[-24px]">
+        <div className="px-6 md:px-10 flex items-center justify-between flex-wrap mt-[-24px]">
           {motorbikes.map((motorbike: any) => (
             <div
               key={motorbike._id}

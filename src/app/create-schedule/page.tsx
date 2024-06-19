@@ -13,8 +13,6 @@ const CreateSchedule = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [content, setContent] = useState("");
-  const [numberPeople, setNumberPeople] = useState(0);
-  const [name, setName] = useState("");
   const [startLocation, setStartLocation] = useState<any>(null);
   const [stopLocations, setStopLocations] = useState<any[]>([]);
   const [endLocation, setEndLocation] = useState<any>(null);
@@ -31,13 +29,10 @@ const CreateSchedule = () => {
         endLocation,
         startDate,
         endDate,
-        name,
-        numberPeople,
         description: content,
       });
-      console.log(endLocation);
 
-      toast.success("Tạo lịch trình thành công");
+      toast.success("Đã lưu lại lịch trình của bạn");
     } catch (err) {
       console.log(err);
     }
@@ -74,7 +69,7 @@ const CreateSchedule = () => {
   };
 
   return (
-    <div className="px-10 py-6 flex max-md:flex-col gap-12">
+    <div className="px-6 md:px-10 py-6 flex max-md:flex-col-reverse gap-12">
       <form
         className="w-full md:w-[50%] max-h-[480px] py-4 overflow-y-scroll overflow-x-hidden"
         onSubmit={handleSubmit}
@@ -147,7 +142,7 @@ const CreateSchedule = () => {
               className="p-1.5 border border-gray-400 rounded-lg w-full outline-none"
             />
           </div>
-          <div>
+          {/* <div>
             <label className="mb-1 inline-block">Tên lịch trình</label>
             <input
               required
@@ -163,7 +158,7 @@ const CreateSchedule = () => {
               onChange={(e) => setNumberPeople(Number(e.target.value))}
               className="p-1.5 border border-gray-400 rounded-lg w-full outline-none"
             />
-          </div>
+          </div> */}
         </div>
         <div className="mt-4 pr-8">
           <label className="mb-1 inline-block">Mô tả lộ trình</label>
