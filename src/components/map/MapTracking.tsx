@@ -48,11 +48,15 @@ const MapTracking = ({
   startLocation,
   endLocation,
   stopLocations,
+  distance,
+  setDistance,
   showUserLocation,
 }: {
   startLocation: any;
   endLocation: any;
   stopLocations: any;
+  distance: number | null;
+  setDistance: (distance: number) => void;
   showUserLocation: boolean;
 }) => {
   const [viewport, setViewport] = useState({
@@ -67,7 +71,6 @@ const MapTracking = ({
     transitionInterpolator: new LinearInterpolator(),
   });
   const [route, setRoute] = useState<FeatureCollection | null>(null);
-  const [distance, setDistance] = useState<number | null>(null);
   const [duration, setDuration] = useState<number | null>(null);
   const [midpoint, setMidpoint] = useState<any | null>(null);
 

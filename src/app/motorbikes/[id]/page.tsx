@@ -86,7 +86,10 @@ const MotorbikeDetail = ({ params }: { params: { id: string } }) => {
           </h1>
           <div className="mt-2">
             <h1 className="text-lg font-semibold">Tổng quan</h1>
-            <p className="mt-2">{motorbike?.description}</p>
+            <p
+              className="mt-2 motor-description"
+              dangerouslySetInnerHTML={{ __html: motorbike?.description }}
+            ></p>
             <h1 className="text-lg font-semibold mt-4">Thông số</h1>
             <p className="py-2">Phân khối: {motorbike?.engine} cc</p>
             <p className="py-2">Khối lượng: {motorbike?.weight} kg</p>

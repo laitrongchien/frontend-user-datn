@@ -4,7 +4,7 @@ import ProfileLayout from "@/components/profile/ProfileLayout";
 import { useEffect, useState } from "react";
 import { bookingTourService } from "@/services/api/booking";
 import DataTable from "react-data-table-component";
-import { formatCurrency, formatTime } from "@/utils/common";
+import { formatCurrency, formatDate } from "@/utils/common";
 import Link from "next/link";
 import Loading from "@/components/global/Loading";
 
@@ -35,7 +35,7 @@ const BookingOrders = () => {
     },
     {
       name: "Ngày thanh toán",
-      selector: (row: any) => formatTime(row?.createdAt),
+      selector: (row: any) => formatDate(row?.createdAt),
       sortable: true,
     },
     {

@@ -29,9 +29,11 @@ const modules = {
 const QuillEditor = ({
   content,
   setContent,
+  placeholder,
 }: {
   content: string;
   setContent: any;
+  placeholder?: string;
 }) => {
   return (
     <ReactQuill
@@ -39,6 +41,7 @@ const QuillEditor = ({
       modules={modules}
       onChange={setContent}
       value={content}
+      placeholder={placeholder}
     />
   );
 };

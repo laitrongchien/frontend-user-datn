@@ -78,7 +78,7 @@ const Navbar = () => {
               pathname.includes("/create-schedule") ? "active" : ""
             }`}
           >
-            <Link href={"/create-schedule"}>Tạo lịch trình</Link>
+            <Link href={"/create-schedule"}>Lịch trình</Link>
           </li>
         )}
       </ul>

@@ -1,4 +1,4 @@
-import { formatTimeDate } from "@/utils/common";
+import { formatDateTime } from "@/utils/common";
 import Image from "next/image";
 import { useAppSelector } from "@/store/hooks";
 
@@ -35,7 +35,7 @@ const ReviewCard = ({ review }: { review: any }) => {
           <h1 className="font-semibold">
             {user?._id === review.user._id ? "Bạn" : review.user.name}
           </h1>
-          <h1 className="text-sm">{formatTimeDate(review.createdAt)}</h1>
+          <h1 className="text-sm">{formatDateTime(review.createdAt)}</h1>
         </div>
       </div>
       <div className="rating rating-sm mt-2">{renderStars()}</div>

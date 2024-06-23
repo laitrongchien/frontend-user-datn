@@ -11,6 +11,7 @@ import { MdArrowBackIos } from "react-icons/md";
 const SelfTourDetail = ({ params }: { params: { id: string } }) => {
   const selfTourId = params.id;
   const [selfTourDetail, setSelfTourDetail] = useState<any>();
+  const [distance, setDistance] = useState<number | null>(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -40,20 +41,23 @@ const SelfTourDetail = ({ params }: { params: { id: string } }) => {
               <span>Quay lại</span>
             </Link>
             <h1 className="text-[20px] font-semibold text-center mb-4">
-              {selfTourDetail?.name}
+              Lịch trình đã lưu
             </h1>
-            <p
-              dangerouslySetInnerHTML={{ __html: selfTourDetail?.description }}
-            ></p>
             <p className="mb-4 font-semibold">Bản đồ tham khảo</p>
             <div className="w-full h-[480px]">
               <MapTracking
                 startLocation={selfTourDetail?.startLocation}
                 endLocation={selfTourDetail?.endLocation}
                 stopLocations={selfTourDetail?.stopLocations}
+                distance={distance}
+                setDistance={setDistance}
                 showUserLocation={false}
               />
             </div>
+            <p className="mt-4 font-semibold">Mô tả</p>
+            <p
+              dangerouslySetInnerHTML={{ __html: selfTourDetail?.description }}
+            ></p>
           </>
         )}
       </div>

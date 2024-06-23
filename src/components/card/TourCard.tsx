@@ -8,14 +8,14 @@ import { MdStar } from "react-icons/md";
 const TourCard = ({ tour }: { tour: any }) => {
   return (
     <div className="rounded-lg shadow-md overflow-hidden border border-gray-300">
-      <div className="relative">
+      <div className="relative overflow-hidden">
         <Link href={`/tours/${tour._id}`}>
           <Image
             src={tour.imageCover}
             alt="img1"
             width={768}
             height={375}
-            className="w-full object-cover lg:h-56 sm:h-64 max-sm:h-96"
+            className="w-full object-cover lg:h-56 sm:h-64 max-sm:h-96 hover:scale-125 transition-all duration-300"
           />
         </Link>
       </div>
@@ -34,9 +34,11 @@ const TourCard = ({ tour }: { tour: any }) => {
             </div>
           )}
         </div>
-        <h1 className="font-semibold py-1 border-b border-gray-300">
-          {tour.name}
-        </h1>
+        <div className="py-1 border-b border-gray-300">
+          <Link href={`/tours/${tour._id}`} className="font-semibold">
+            {tour.name}
+          </Link>
+        </div>
         <div className="mt-2">
           <p>
             Thời gian: {tour.duration} ngày / {tour.duration - 1} đêm

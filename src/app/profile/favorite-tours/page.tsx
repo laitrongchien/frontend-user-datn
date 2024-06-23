@@ -50,12 +50,12 @@ const FavoriteTours = () => {
             </div>
           ) : (
             favoriteTours.map((favoriteTour: any) => (
-              <div key={favoriteTour.tour._id} className="mb-12 relative">
+              <div key={favoriteTour.tour?._id} className="mb-12 relative">
                 <HorizTourCard tour={favoriteTour.tour} hideHeartIcon={true} />
                 <button
                   className="absolute top-2 left-2 flex-center p-1 bg-white rounded-full"
                   onClick={() => {
-                    handleDeleteTour(favoriteTour.tour._id);
+                    handleDeleteTour(favoriteTour.tour?._id);
                     (
                       document.getElementById("my_modal_2") as HTMLDialogElement
                     )?.showModal();

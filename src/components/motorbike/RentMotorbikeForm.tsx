@@ -91,7 +91,6 @@ const RentMotorbikeForm = ({
         <div className="my-2 basis-[46%]">
           <h1>Ngày nhận</h1>
           <DatePicker
-            showIcon
             selected={startDate}
             minDate={new Date()}
             onChange={(date) => date && setStartDate(date)}
@@ -101,7 +100,6 @@ const RentMotorbikeForm = ({
         <div className="my-2 basis-[46%]">
           <h1>Ngày trả</h1>
           <DatePicker
-            showIcon
             selected={finishDate}
             minDate={new Date(startDate.getTime() + 24 * 60 * 60 * 1000)}
             onChange={(date) => date && setFinishDate(date)}

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useAppSelector } from "@/store/hooks";
 import { useEffect, useState } from "react";
-import { formatCurrency, formatTime } from "@/utils/common";
+import { formatCurrency, formatDate } from "@/utils/common";
 import { setBookingData } from "@/utils/storage";
 import { paymentService } from "@/services/api/payment";
 
@@ -46,6 +46,7 @@ const BookingTourForm = ({ tour }: { tour: any }) => {
           className="p-1.5 border border-gray-400 rounded-lg w-full placeholder:text-gray-600 outline-none"
           value={phone}
           onChange={(e: any) => setPhone(e.target.value)}
+          placeholder="Số điện thoại của bạn"
           required
         />
       </div>
@@ -62,7 +63,7 @@ const BookingTourForm = ({ tour }: { tour: any }) => {
           </option>
           {tour?.startDates?.map((date: any, index: any) => (
             <option key={index} value={date}>
-              {formatTime(date)}
+              {formatDate(date)}
             </option>
           ))}
         </select>

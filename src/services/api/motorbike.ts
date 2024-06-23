@@ -8,7 +8,7 @@ const getAllMotorbikes = async (
   sortField?: string,
   sortOrder?: number
 ) => {
-  let url = `/motorbike/all/?page=${page}&limit=${limit}`;
+  let url = `/motorbike/all?page=${page}&limit=${limit}`;
   if (userId) {
     url += `&userId=${userId}`;
   }
@@ -33,6 +33,12 @@ const getMotorbikeById = async (id: string) => {
   return await axios.get(`/motorbike/get-motorbike/${id}`);
 };
 
+const getSuggestMotorbikes = async (distance: number) => {
+  return await axios.get(
+    `/motorbike/get-suggest-motorbikes?distance=${distance}`
+  );
+};
+
 const likeMotorbike = async (motorbikeId: string) => {
   return await axios.post(`/motorbike/like-motorbike/${motorbikeId}`);
 };
@@ -54,4 +60,5 @@ export const motorbikeService = {
   getFavoriteMotorbikes,
   getMotorbikeById,
   getAllAvailableMotor,
+  getSuggestMotorbikes,
 };

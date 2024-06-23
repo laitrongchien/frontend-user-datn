@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { MdArrowBackIos } from "react-icons/md";
-import { formatCurrency, formatTime } from "@/utils/common";
+import { formatCurrency, formatDate } from "@/utils/common";
 import { bookingTourService } from "@/services/api/booking";
 import Loading from "@/components/global/Loading";
 import ProfileLayout from "@/components/profile/ProfileLayout";
@@ -48,7 +48,10 @@ const TourBookingDetail = ({ params }: { params: { id: string } }) => {
             <div className="mt-8 flex justify-between">
               {bookingTour && (
                 <Image
-                  src={bookingTour?.tour.imageCover}
+                  src={
+                    bookingTour?.tour?.imageCover ||
+                    bookingTour?.tourHistory?.imageCover
+                  }
                   alt="tour-img"
                   width={768}
                   height={375}
@@ -57,17 +60,21 @@ const TourBookingDetail = ({ params }: { params: { id: string } }) => {
               )}
 
               <div>
-                <h1 className="text-lg font-semibold">
-                  {bookingTour?.tour.name}
+                <h1 className="text-lg font-semibold text-right">
+                  {bookingTour?.tour?.name || bookingTour?.tourHistory?.name}
                 </h1>
                 <p className="py-1 text-right">
-                  Giá: {formatCurrency(bookingTour?.tour.price)}/ người
+                  Giá:{" "}
+                  {formatCurrency(
+                    bookingTour?.tour?.price || bookingTour?.tourHistory?.price
+                  )}
+                  / người
                 </p>
                 <p className="py-1 text-right">
                   Số lượng người: {bookingTour?.numberPeople}
                 </p>
                 <p className="py-1 text-right">
-                  Ngày khởi hành: {formatTime(bookingTour?.startDate)}
+                  Ngày khởi hành: {formatDate(bookingTour?.startDate)}
                 </p>
               </div>
             </div>

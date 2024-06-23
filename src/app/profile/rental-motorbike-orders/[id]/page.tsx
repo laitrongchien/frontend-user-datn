@@ -5,7 +5,7 @@ import Image from "next/image";
 import Loading from "@/components/global/Loading";
 import { rentalService } from "@/services/api/rental";
 import { useState, useEffect } from "react";
-import { formatCurrency, formatTime } from "@/utils/common";
+import { formatCurrency, formatDate } from "@/utils/common";
 import ProfileLayout from "@/components/profile/ProfileLayout";
 import { MdArrowBackIos } from "react-icons/md";
 
@@ -48,12 +48,14 @@ const RentalDetail = ({ params }: { params: { id: string } }) => {
             <div>
               {rentalDetail?.motorbikes.map((data: any) => (
                 <div
-                  key={data._id}
+                  key={data?._id}
                   className="flex py-6 border-b border-gray-200 justify-between"
                 >
                   <div className="flex">
                     <Image
-                      src={data.motorbike.image}
+                      src={
+                        data.motorbike?.image || data.motorbikeHistory?.image
+                      }
                       alt="img1"
                       width={279}
                       height={175}
@@ -61,17 +63,20 @@ const RentalDetail = ({ params }: { params: { id: string } }) => {
                     />
                     <div className="ml-16">
                       <h1 className="text-xl font-semibold">
-                        {data.motorbike.name}
+                        {data.motorbike?.name || data.motorbikeHistory?.name}
                       </h1>
                       <h1>
                         Giá thuê:{" "}
                         <span className="text-primary">
-                          {formatCurrency(data.motorbike.price)}
+                          {formatCurrency(
+                            data.motorbike?.price ||
+                              data.motorbikeHistory?.price
+                          )}
                         </span>
                         /ngày
                       </h1>
-                      <p>Ngày nhận: {formatTime(data.startDate)}</p>
-                      <p>Ngày trả: {formatTime(data.finishDate)}</p>
+                      <p>Ngày nhận: {formatDate(data.startDate)}</p>
+                      <p>Ngày trả: {formatDate(data.finishDate)}</p>
                       <p>Số lượng xe thuê: {data.numMotorbikes}</p>
                     </div>
                   </div>
@@ -79,7 +84,8 @@ const RentalDetail = ({ params }: { params: { id: string } }) => {
                     Tổng tiền thuê:{" "}
                     <span className="text-primary">
                       {formatCurrency(
-                        data.motorbike.price * data.numMotorbikes
+                        data.motorbike?.price ||
+                          data.motorbikeHistory?.price * data.numMotorbikes
                       )}
                     </span>
                   </p>

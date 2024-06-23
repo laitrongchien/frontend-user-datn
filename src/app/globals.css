@@ -22,21 +22,17 @@ textarea {
   outline: none;
 }
 
-/* body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.motor-description ol {
+  list-style: decimal;
+  list-style-position: inside;
+  margin-left: 20px;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-} */
+.motor-description ul {
+  list-style: disc;
+  list-style-position: inside;
+  margin-left: 20px;
+}
 
 ::-webkit-scrollbar {
   width: 6px;
@@ -68,8 +64,9 @@ textarea {
 }
 
 .react-datepicker-wrapper input {
-  border: 1px solid #888;
+  border: 1px solid #6b7280;
   border-radius: 8px;
+  padding: 6px;
 }
 
 .rbc-toolbar .rtc-btn-group {
