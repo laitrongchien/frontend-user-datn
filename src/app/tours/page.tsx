@@ -7,6 +7,7 @@ import Pagination from "@/components/global/Pagination";
 import { tourService } from "@/services/api/tour";
 import { useAppSelector } from "@/store/hooks";
 import Loading from "@/components/global/Loading";
+import { TOURS_PER_PAGE } from "@/constants";
 
 const Tour = () => {
   const [tours, setTours] = useState([]);
@@ -25,7 +26,7 @@ const Tour = () => {
         setLoading(true);
         const response = await tourService.getAllTours(
           currentPage,
-          4,
+          TOURS_PER_PAGE,
           user?._id,
           startLocation,
           Number(minDuration),

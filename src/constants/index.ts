@@ -9,6 +9,10 @@ export const REVIEWS_PER_TOUR = 5;
 
 export const REVIEWS_PER_MOTOR = 5;
 
+export const TOURS_PER_PAGE = 6;
+
+export const MOTORS_PER_PAGE = 6;
+
 export const startLocationOptions = [
   {
     label: "Hà Nội",

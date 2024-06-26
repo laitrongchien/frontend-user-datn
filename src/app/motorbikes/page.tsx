@@ -7,6 +7,7 @@ import Pagination from "@/components/global/Pagination";
 import { motorbikeService } from "@/services/api/motorbike";
 import { useAppSelector } from "@/store/hooks";
 import Loading from "@/components/global/Loading";
+import { MOTORS_PER_PAGE } from "@/constants";
 
 const Motorbike = () => {
   const [motorbikes, setMotorbikes] = useState([]);
@@ -71,7 +72,7 @@ const Motorbike = () => {
         setLoading(true);
         const response = await motorbikeService.getAllMotorbikes(
           currentPage,
-          6,
+          MOTORS_PER_PAGE,
           user?._id,
           type || typeMotorbike,
           sortField,
