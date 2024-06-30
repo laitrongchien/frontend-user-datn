@@ -29,6 +29,12 @@ const getTourById = async (id: string) => {
   return await axios.get(`/tour/get-tour/${id}`);
 };
 
+const updateRemainGuestOfTour = async (id: string, availableRemain: number) => {
+  return await axios.put(`/tour/update-remain-guest/${id}`, {
+    availableRemain,
+  });
+};
+
 const createSelfTour = async (selfTourData: any) => {
   return await axios.post("/tour/create-self-tour", selfTourData);
 };
@@ -67,4 +73,5 @@ export const tourService = {
   createSelfTour,
   getAllSelfTours,
   getSelfTourById,
+  updateRemainGuestOfTour,
 };

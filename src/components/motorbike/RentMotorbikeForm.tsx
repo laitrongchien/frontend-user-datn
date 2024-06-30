@@ -140,14 +140,17 @@ const RentMotorbikeForm = ({
             placeholder="Số lượng xe"
             type="number"
             min="0"
-            max={availableMotors.length}
             value={numMotorbikes}
             onChange={(e: any) => setNumMotorbikes(parseInt(e.target.value))}
           />
         </div>
       </div>
 
-      <p className="text-sm mt-2 font-semibold">
+      <p
+        className={`text-sm mt-2 font-semibold ${
+          numMotorbikes > availableMotors.length && "text-error"
+        }`}
+      >
         Số lượng xe sẵn có: {availableMotors.length}
       </p>
       <div className="my-3">
@@ -201,8 +204,11 @@ const RentMotorbikeForm = ({
       {user ? (
         <button
           type="submit"
-          disabled={numMotorbikes === 0}
-          className="w-full p-1.5 rounded-lg text-white bg-primary"
+          className={`w-full p-1.5 rounded-lg text-white ${
+            numMotorbikes > 0 && numMotorbikes <= availableMotors.length
+              ? "bg-primary"
+              : "bg-[#c4c4c4] cursor-not-allowed"
+          }`}
         >
           Thanh toán
         </button>

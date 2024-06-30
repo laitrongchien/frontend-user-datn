@@ -7,7 +7,7 @@ import ReviewCard from "@/components/card/ReviewCard";
 import Loading from "@/components/global/Loading";
 import { tourService } from "@/services/api/tour";
 import { reviewService } from "@/services/api/review";
-import { formatCurrency } from "@/utils/common";
+import { formatCurrency, formatDate } from "@/utils/common";
 import BookingTourForm from "@/components/tour/BookingTourForm";
 import CreateReviewTour from "@/components/tour/CreateReviewTour";
 import { REVIEWS_PER_TOUR } from "@/constants";
@@ -81,6 +81,7 @@ const TourDetail = ({ params }: { params: { id: string } }) => {
             {formatCurrency(tour?.price)}
           </span>
         </p>
+        <p className="py-1">Ngày khởi hành: {formatDate(tour?.startDate)}</p>
       </div>
       {tour && (
         <Image
@@ -144,6 +145,17 @@ const TourDetail = ({ params }: { params: { id: string } }) => {
             <MdOutlineCheck size={24} color="#28a745" />
           </div>
         </div>
+      </div>
+      <div className="mt-4">
+        <h1 className="text-lg font-semibold">Xe theo tour:</h1>
+        <p>{tour?.motorForTour?.name}</p>
+        <Image
+          src={tour?.motorForTour?.image}
+          alt="imgCover"
+          width={1024}
+          height={795}
+          className="w-full md:w-[500px] h-[300px] object-cover mt-4"
+        />
       </div>
       <div className="mt-6">
         <h1 className="text-lg font-semibold">Đánh giá từ khách hàng</h1>

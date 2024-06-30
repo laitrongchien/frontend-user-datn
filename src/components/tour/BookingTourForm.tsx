@@ -6,7 +6,6 @@ import { setBookingData } from "@/utils/storage";
 import { paymentService } from "@/services/api/payment";
 
 const BookingTourForm = ({ tour }: { tour: any }) => {
-  const [startDate, setStartDate] = useState();
   const [numberPeople, setNumberPeople] = useState(1);
   const [phone, setPhone] = useState("");
   const [totalPrice, setTotalPrice] = useState(0);
@@ -23,7 +22,7 @@ const BookingTourForm = ({ tour }: { tour: any }) => {
       tour: tour?._id,
       user: user._id,
       phone,
-      startDate,
+      startDate: tour?.startDate,
       numberPeople,
       paymentType,
       totalPrice,
@@ -51,8 +50,11 @@ const BookingTourForm = ({ tour }: { tour: any }) => {
         />
       </div>
       <div className="mt-2">
-        <h1>Ngày khởi hành</h1>
-        <select
+        <h1>
+          Ngày khởi hành:{" "}
+          <span className="font-semibold">{formatDate(tour?.startDate)}</span>
+        </h1>
+        {/* <select
           className="p-1.5 border border-gray-400 rounded-lg w-full placeholder:text-gray-600 outline-none"
           value={startDate}
           onChange={(e: any) => setStartDate(e.target.value)}
@@ -66,7 +68,7 @@ const BookingTourForm = ({ tour }: { tour: any }) => {
               {formatDate(date)}
             </option>
           ))}
-        </select>
+        </select> */}
       </div>
       <div className="mt-2">
         <h1>Số người tham gia</h1>
@@ -79,6 +81,14 @@ const BookingTourForm = ({ tour }: { tour: any }) => {
           onChange={(e: any) => setNumberPeople(parseInt(e.target.value))}
         />
       </div>
+      <p
+        className={`mt-2 ${
+          numberPeople > tour?.availableRemain && "text-error"
+        }`}
+      >
+        Số lượng chỗ tham gia còn lại:{" "}
+        <span className="font-semibold">{tour?.availableRemain}</span>
+      </p>
       <div className="mt-2">
         <h1>Lưu ý</h1>
         <textarea
@@ -138,7 +148,11 @@ const BookingTourForm = ({ tour }: { tour: any }) => {
       {user ? (
         <button
           type="submit"
-          className="w-full p-1.5 rounded-lg text-white bg-primary mb-4"
+          className={`w-full p-1.5 rounded-lg text-white ${
+            numberPeople <= tour?.availableRemain
+              ? "bg-primary"
+              : "bg-[#c4c4c4] cursor-not-allowed"
+          } mb-4`}
         >
           Thanh toán
         </button>

@@ -55,31 +55,36 @@ const BookingOrders = () => {
       ),
       wrap: true,
     },
+    // {
+    //   name: "Trạng thái đơn",
+    //   cell: (row: any) => (
+    //     <h1
+    //       className={`
+    //           ${
+    //             row?.status === "completed"
+    //               ? "text-success"
+    //               : row?.status === "started"
+    //               ? "text-blue"
+    //               : row?.status === "not-started"
+    //               ? "text-error"
+    //               : "text-primary"
+    //           } font-semibold
+    //         `}
+    //     >
+    //       {row?.status === "completed"
+    //         ? "Đã hoàn thành"
+    //         : row?.status === "started"
+    //         ? "Đã tham gia"
+    //         : row?.status === "not-started"
+    //         ? "Không tham gia"
+    //         : "Chưa khởi hành"}
+    //     </h1>
+    //   ),
+    //   wrap: true,
+    // },
     {
-      name: "Trạng thái đơn",
-      cell: (row: any) => (
-        <h1
-          className={`
-              ${
-                row?.status === "completed"
-                  ? "text-success"
-                  : row?.status === "started"
-                  ? "text-blue"
-                  : row?.status === "not-started"
-                  ? "text-error"
-                  : "text-primary"
-              } font-semibold
-            `}
-        >
-          {row?.status === "completed"
-            ? "Đã hoàn thành"
-            : row?.status === "started"
-            ? "Đã tham gia"
-            : row?.status === "not-started"
-            ? "Không tham gia"
-            : "Chưa khởi hành"}
-        </h1>
-      ),
+      name: "Ngày khởi hành",
+      cell: (row: any) => <span>{formatDate(row?.startDate)}</span>,
       wrap: true,
     },
     {
