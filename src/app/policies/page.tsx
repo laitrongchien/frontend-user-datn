@@ -1,3 +1,4 @@
+import { faqs } from "@/constants";
 import Image from "next/image";
 
 const Policy = () => {
@@ -12,7 +13,7 @@ const Policy = () => {
       >
         <div className="absolute inset-0 bg-black opacity-40"></div>
         <h1 className="font-sans font-extrabold text-5xl text-white z-10">
-          CHÍNH SÁCH
+          CHÍNH SÁCH VÀ CÂU HỎI THƯỜNG GẶP
         </h1>
       </div>
       <div className="px-6 md:px-20 py-10">
@@ -34,7 +35,8 @@ const Policy = () => {
             </li>
             <li className="mt-2">
               <p>
-                <strong>2</strong>- lại các giấy tờ sau trong các giấy tờ sau:
+                <strong>2</strong>- Để lại các giấy tờ sau trong các giấy tờ
+                sau:
               </p>
               <p className="mt-2">
                 Đối với khách du lịch đi bằng máy bay vui lòng để lại{" "}
@@ -48,9 +50,11 @@ const Policy = () => {
                 <strong>CMND, thẻ Căn cước Công dân</strong> hoặc{" "}
                 <strong>Hộ chiếu</strong> kèm <strong>Sổ hộ khẩu</strong> (nếu
                 không có sổ hộ khẩu sẽ thay thế bằng tiền đặt cọc{" "}
-                <strong>3 triệu đồng</strong>i với xe số và tiền đặt cọc{" "}
-                <strong>5 triệu đồng</strong> đối với xe tay ga - số tiền này
-                chúng tôi sẽ hoàn trả lại sau khi khách hàng hoàn tất trả xe)
+                <strong>3 triệu đồng</strong>i với xe số, tiền đặt cọc{" "}
+                <strong>5 triệu đồng</strong> đối với xe tay ga và khoảng{" "}
+                <strong>10 - 20 triệu đồng</strong> đối với xe tay côn và phân
+                khối lớn - số tiền này chúng tôi sẽ hoàn trả lại sau khi khách
+                hàng hoàn tất trả xe)
               </p>
             </li>
             <li className="mt-2">
@@ -116,6 +120,21 @@ const Policy = () => {
               giá tại thời điểm cho thuê xe.
             </li>
           </ul>
+        </div>
+        <div className="mt-8">
+          <span className="font-semibold text-[20px]">Câu hỏi thường gặp</span>
+          {faqs.map((faq, index) => (
+            <div
+              className="collapse bg-base-300 collapse-plus mt-2"
+              key={index}
+            >
+              <input type="checkbox" />
+              <div className="collapse-title text-base font-semibold">
+                {faq.question}
+              </div>
+              <div className="collapse-content">{faq.answer}</div>
+            </div>
+          ))}
         </div>
       </div>
     </>

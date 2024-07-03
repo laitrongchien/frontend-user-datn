@@ -42,7 +42,7 @@ const Tour = () => {
     };
 
     fetchTours();
-  }, [currentPage]);
+  }, [currentPage, maxDuration, minDuration, startLocation, user?._id]);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);

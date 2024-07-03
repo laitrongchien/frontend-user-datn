@@ -75,3 +75,25 @@ export const typeMotorOptions = [
 
 export const PASSWORD_REGEX =
   /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+export const faqs = [
+  {
+    question: "Ngày nhận xe thuê dự kiến có thể vào ngày nào ?",
+    answer:
+      "Để tối ưu khả năng sắp xếp xe thuê một cách tốt nhất, ngày nhận xe dự kiến sớm nhất là 1 ngày và muộn nhất là 3 ngày so với ngày hiện tại",
+  },
+  {
+    question: "Khi gặp trường hợp khẩn cấp có thể liên hệ qua đâu ?",
+    answer:
+      "Hotline của chúng tôi là 0904392423. Nếu gặp vấn đề gì, hãy gọi cho chúng tôi để nhận được sự trợ giúp tốt nhất",
+  },
+  {
+    question: "Nếu xe gặp sự cố trên đường thì sao ?",
+    answer:
+      "Chúng tôi cung cấp một số dụng cụ kèm theo để sửa nếu vấn đề nhẹ, nếu tình trạng phức tạp hãy gọi cho chúng tôi qua hotline để có thể sửa chữa lưu động với chi phí phù hợp",
+  },
+  {
+    question: "Tôi có thể thanh toán bằng tiền mặt không ?",
+    answer: "Có, bạn có thể thanh toán bằng tiền mặt",
+  },
+];

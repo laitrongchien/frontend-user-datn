@@ -49,7 +49,7 @@ const unlikeMotorbike = async (motorbikeId: string) => {
 
 const getAllAvailableMotor = async (motorbikeId: string, location: string) => {
   return await axios.get(
-    `/identification/get-all-available-motor/${motorbikeId}?location=${location}`
+    `/identification/get-all-available-motor/${motorbikeId}?location=${location}&isTempoRent=false`
   );
 };
 

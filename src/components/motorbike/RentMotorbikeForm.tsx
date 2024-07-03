@@ -19,7 +19,9 @@ const RentMotorbikeForm = ({
   motorbikeId: string;
   motorbikePrice: number;
 }) => {
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(
+    new Date(Date.now() + 24 * 60 * 60 * 1000)
+  );
   const [finishDate, setFinishDate] = useState(
     new Date(startDate.getTime() + 24 * 60 * 60 * 1000)
   );
@@ -30,6 +32,7 @@ const RentMotorbikeForm = ({
   const [availableMotors, setAvailableMotors] = useState([]);
   const [location, setLocation] = useState(DEFAULT_LOCATION);
   const [locations, setLocations] = useState([]);
+  const [isPolicyAccepted, setIsPolicyAccepted] = useState(false);
   const { user } = useAppSelector((state) => state.auth);
 
   useEffect(() => {
@@ -49,6 +52,8 @@ const RentMotorbikeForm = ({
     };
     fetchAllAvailableMotor();
   }, [location, motorbikeId]);
+
+  console.log(availableMotors);
 
   useEffect(() => {
     const getAllLocations = async () => {
@@ -92,7 +97,9 @@ const RentMotorbikeForm = ({
           <h1>Ngày nhận</h1>
           <DatePicker
             selected={startDate}
-            minDate={new Date()}
+            minDate={new Date(Date.now() + 24 * 60 * 60 * 1000)}
+            maxDate={new Date(Date.now() + 3 * 24 * 60 * 60 * 1000)}
+            dateFormat="dd/MM/yyyy"
             onChange={(date) => date && setStartDate(date)}
             wrapperClassName="border border-gray-200"
           />
@@ -102,6 +109,7 @@ const RentMotorbikeForm = ({
           <DatePicker
             selected={finishDate}
             minDate={new Date(startDate.getTime() + 24 * 60 * 60 * 1000)}
+            dateFormat="dd/MM/yyyy"
             onChange={(date) => date && setFinishDate(date)}
             wrapperClassName="border border-gray-200"
           />
@@ -185,7 +193,7 @@ const RentMotorbikeForm = ({
       </label>
       <label
         htmlFor="payPart"
-        className="flex px-4 py-2 border rounded-lg border-gray-400 justify-between mt-2 mb-4"
+        className="flex px-4 py-2 border rounded-lg border-gray-400 justify-between mt-2 mb-2"
       >
         <div className="flex">
           <input
@@ -201,11 +209,29 @@ const RentMotorbikeForm = ({
           {formatCurrency(totalPrice * 0.2)}
         </p>
       </label>
+      <label htmlFor="policyAcceptance" className="flex items-center mb-2">
+        <input
+          type="checkbox"
+          id="policyAcceptance"
+          checked={isPolicyAccepted}
+          onChange={(e) => setIsPolicyAccepted(e.target.checked)}
+          className="mr-2"
+        />
+        <span>
+          Tôi đồng ý với các{" "}
+          <Link href="/policies" className="underline">
+            <span>chính sách</span>
+          </Link>{" "}
+          của motor24h.vn
+        </span>
+      </label>
       {user ? (
         <button
           type="submit"
           className={`w-full p-1.5 rounded-lg text-white ${
-            numMotorbikes > 0 && numMotorbikes <= availableMotors.length
+            isPolicyAccepted &&
+            numMotorbikes > 0 &&
+            numMotorbikes <= availableMotors.length
               ? "bg-primary"
               : "bg-[#c4c4c4] cursor-not-allowed"
           }`}
