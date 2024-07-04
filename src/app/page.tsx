@@ -8,9 +8,13 @@ import MotorbikeSwiper from "@/components/swiper/MotorbikeSwiper";
 import SearchForm from "@/components/global/SearchForm";
 
 export default async function Home() {
-  const popularTours = (await tourService.getPopularTours()).data;
-  const popularMotorbikes = (await motorbikeService.getPopularMotorbikes())
-    .data;
+  const popularTours = await tourService
+    .getPopularTours()
+    .then((response) => response.data);
+  const popularMotorbikes = await motorbikeService
+    .getPopularMotorbikes()
+    .then((response) => response.data);
+
   const popularDestinations = [
     {
       name: "Cao Bằng",
