@@ -9,7 +9,7 @@ import Loading from "@/components/global/Loading";
 import { reviewService } from "@/services/api/review";
 import RentMotorbikeForm from "@/components/motorbike/RentMotorbikeForm";
 import CreateReviewMotorbike from "@/components/motorbike/CreateReviewMotorbike";
-import { REVIEWS_PER_MOTOR } from "@/constants";
+import { REVIEWS_PER_MOTOR, servicesInRent } from "@/constants";
 import Pagination from "@/components/global/Pagination";
 
 const MotorbikeDetail = ({ params }: { params: { id: string } }) => {
@@ -101,50 +101,19 @@ const MotorbikeDetail = ({ params }: { params: { id: string } }) => {
           <div className="mt-4">
             <h1 className="text-lg font-semibold">Bao gồm trong tiền thuê:</h1>
             <div className="flex items-center flex-wrap">
-              <div className="basis-1/2 mt-4 flex items-center">
-                <Image
-                  src="https://cdn.riderly.com/storage/media/img/addons/helmet.svg"
-                  alt="img-source"
-                  width={150}
-                  height={150}
-                  className="w-8 h-8 object-cover"
-                />
-                <p className="ml-4 mr-2">Mũ bảo hiểm</p>
-                <MdOutlineCheck size={24} color="#28a745" />
-              </div>
-              <div className="basis-1/2 mt-4 flex items-center">
-                <Image
-                  src="https://cdn.riderly.com/storage/media/img/addons/padlock.svg"
-                  alt="img-source"
-                  width={150}
-                  height={150}
-                  className="w-8 h-8 object-cover"
-                />
-                <p className="ml-4 mr-2">Khóa xe</p>
-                <MdOutlineCheck size={24} color="#28a745" />
-              </div>
-              <div className="basis-1/2 mt-4 flex items-center">
-                <Image
-                  src="https://cdn.riderly.com/storage/media/img/addons/mechanic.svg"
-                  alt="img-source"
-                  width={150}
-                  height={150}
-                  className="w-8 h-8 object-cover"
-                />
-                <p className="ml-4 mr-2">Hỗ trợ sửa chữa</p>
-                <MdOutlineCheck size={24} color="#28a745" />
-              </div>
-              <div className="basis-1/2 mt-4 flex items-center">
-                <Image
-                  src="https://cdn.riderly.com/storage/media/img/addons/bike_replacement.svg"
-                  alt="img-source"
-                  width={150}
-                  height={150}
-                  className="w-8 h-8 object-cover"
-                />
-                <p className="ml-4 mr-2">Thay thế xe</p>
-                <MdOutlineCheck size={24} color="#28a745" />
-              </div>
+              {servicesInRent.map((service, index) => (
+                <div key={index} className="basis-1/2 mt-4 flex items-center">
+                  <Image
+                    src={service.image}
+                    alt="img-source"
+                    width={150}
+                    height={150}
+                    className="w-8 h-8 object-cover"
+                  />
+                  <p className="ml-4 mr-2">{service.label}</p>
+                  <MdOutlineCheck size={24} color="#28a745" />
+                </div>
+              ))}
             </div>
           </div>
           <div className="mt-6">

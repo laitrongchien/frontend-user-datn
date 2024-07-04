@@ -241,7 +241,7 @@ const RentMotorbikeForm = ({
       ) : (
         <div className="flex-center mt-2">
           <Link href={"/auth/login"} className=" text-primary">
-            Đăng nhập để đặt xe
+            Đăng nhập để thuê xe
           </Link>
         </div>
       )}

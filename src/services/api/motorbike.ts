@@ -25,6 +25,10 @@ const getAllMotorbikes = async (
   return res;
 };
 
+const getPopularMotorbikes = async () => {
+  return await axios.get("/motorbike/popular-motorbikes");
+};
+
 const getFavoriteMotorbikes = async () => {
   return await axios.get("/motorbike/favorite-motorbikes");
 };
@@ -61,4 +65,5 @@ export const motorbikeService = {
   getMotorbikeById,
   getAllAvailableMotor,
   getSuggestMotorbikes,
+  getPopularMotorbikes,
 };

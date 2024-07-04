@@ -1,12 +1,16 @@
 import Link from "next/link";
 import Image from "next/image";
 import { tourService } from "@/services/api/tour";
+import { motorbikeService } from "@/services/api/motorbike";
 import TourSwiper from "@/components/swiper/TourSwiper";
 import DestinationSwiper from "@/components/swiper/DestinationSwiper";
+import MotorbikeSwiper from "@/components/swiper/MotorbikeSwiper";
 import SearchForm from "@/components/global/SearchForm";
 
 export default async function Home() {
-  const popularTours = await (await tourService.getPopularTours()).data;
+  const popularTours = (await tourService.getPopularTours()).data;
+  const popularMotorbikes = (await motorbikeService.getPopularMotorbikes())
+    .data;
   const popularDestinations = [
     {
       name: "Cao Bằng",
@@ -109,6 +113,21 @@ export default async function Home() {
           <div className="flex-center mt-6">
             <Link
               href={"/tours"}
+              className="text-primary font-semibold border border-primary px-6 py-2 hover:text-white hover:bg-primary"
+            >
+              Xem tất cả
+            </Link>
+          </div>
+        </div>
+
+        <div className="mb-16">
+          <h1 className="text-[36px] font-semibold mb-6 text-center text-gray-800">
+            Xe nổi bật
+          </h1>
+          <MotorbikeSwiper motorbikes={popularMotorbikes} />
+          <div className="flex-center mt-6">
+            <Link
+              href={"/motorbikes"}
               className="text-primary font-semibold border border-primary px-6 py-2 hover:text-white hover:bg-primary"
             >
               Xem tất cả

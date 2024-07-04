@@ -10,7 +10,7 @@ import { reviewService } from "@/services/api/review";
 import { formatCurrency, formatDate } from "@/utils/common";
 import BookingTourForm from "@/components/tour/BookingTourForm";
 import CreateReviewTour from "@/components/tour/CreateReviewTour";
-import { REVIEWS_PER_TOUR } from "@/constants";
+import { REVIEWS_PER_TOUR, servicesInTour } from "@/constants";
 import Pagination from "@/components/global/Pagination";
 
 const TourDetail = ({ params }: { params: { id: string } }) => {
@@ -116,34 +116,12 @@ const TourDetail = ({ params }: { params: { id: string } }) => {
       <div className="mt-4">
         <h1 className="text-lg font-semibold">Bao gồm trong tiền thuê:</h1>
         <div className="flex items-center flex-wrap">
-          <div className="basis-1/2 mt-4 flex items-center">
-            <p className="mr-2">Hướng dẫn viên</p>
-            <MdOutlineCheck size={24} color="#28a745" />
-          </div>
-          <div className="basis-1/2 mt-4 flex items-center">
-            <p className="mr-2">Xe đầy xăng</p>
-            <MdOutlineCheck size={24} color="#28a745" />
-          </div>
-          <div className="basis-1/2 mt-4 flex items-center">
-            <p className="mr-2">Mũ bảo hiểm</p>
-            <MdOutlineCheck size={24} color="#28a745" />
-          </div>
-          <div className="basis-1/2 mt-4 flex items-center">
-            <p className="mr-2">Thức ăn + Đồ uống</p>
-            <MdOutlineCheck size={24} color="#28a745" />
-          </div>
-          <div className="basis-1/2 mt-4 flex items-center">
-            <p className="mr-2">Chỗ nghỉ ngơi</p>
-            <MdOutlineCheck size={24} color="#28a745" />
-          </div>
-          <div className="basis-1/2 mt-4 flex items-center">
-            <p className="mr-2">Phí vào cửa/ Giấy phép</p>
-            <MdOutlineCheck size={24} color="#28a745" />
-          </div>
-          <div className="basis-1/2 mt-4 flex items-center">
-            <p className="mr-2">Video chuyến đi</p>
-            <MdOutlineCheck size={24} color="#28a745" />
-          </div>
+          {servicesInTour.map((service, index) => (
+            <div key={index} className="basis-1/2 mt-4 flex items-center">
+              <p className="mr-2">{service}</p>
+              <MdOutlineCheck size={24} color="#28a745" />
+            </div>
+          ))}
         </div>
       </div>
       <div className="mt-4">

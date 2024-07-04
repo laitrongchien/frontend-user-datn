@@ -58,6 +58,48 @@ export const tourDurationOptions = [
   },
 ];
 
+export const servicesInTour = [
+  "Hướng dẫn viên",
+  "Xe đầy xăng",
+  "Mũ bảo hiểm",
+  "Thức ăn + Đồ uống",
+  "Chỗ nghỉ ngơi",
+  "Phí vào cửa/ Giấy phép",
+  "Video chuyến đi",
+];
+
+export const servicesInRent = [
+  {
+    label: "Mũ bảo hiểm",
+    image: "https://cdn.riderly.com/storage/media/img/addons/helmet.svg",
+  },
+  {
+    label: "Găng tay",
+    image: "https://cdn.riderly.com/storage/media/img/addons/gloves.svg",
+  },
+  {
+    label: "Khóa xe",
+    image: "https://cdn.riderly.com/storage/media/img/addons/padlock.svg",
+  },
+  {
+    label: "Hỗ trợ sửa chữa",
+    image: "https://cdn.riderly.com/storage/media/img/addons/mechanic.svg",
+  },
+  {
+    label: "Thay thế xe",
+    image:
+      "https://cdn.riderly.com/storage/media/img/addons/bike_replacement.svg",
+  },
+  {
+    label: "Bình đầy xăng",
+    image: "https://cdn.riderly.com/storage/media/img/addons/full_tank.svg",
+  },
+  {
+    label: "GPS",
+    image: "https://cdn.riderly.com/storage/media/img/addons/gps.svg",
+  },
+];
+
 export const typeMotorOptions = [
   {
     label: "Xe tay côn",
