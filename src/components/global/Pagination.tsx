@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 
 const Pagination = ({
@@ -15,6 +15,7 @@ const Pagination = ({
   onPageChange: (page: number) => void;
 }) => {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const pageNumbers = [];
   for (let i = 1; i <= totalPages; i++) {
     pageNumbers.push(i);
@@ -23,7 +24,9 @@ const Pagination = ({
   const handlePageChange = (page: number) => {
     if (page < 1 || page > totalPages) return;
     if (route) {
-      router.push(`${route}?page=${page}`, { scroll: false });
+      const params = new URLSearchParams(searchParams.toString());
+      params.set("page", page.toString());
+      router.push(`${route}?${params.toString()}`, { scroll: false });
     }
     onPageChange(page);
   };
