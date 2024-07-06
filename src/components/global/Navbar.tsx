@@ -67,20 +67,18 @@ const Navbar = () => {
         </li> */}
         <li
           className={`nav-item ${
+            pathname.includes("/create-schedule") ? "active" : ""
+          }`}
+        >
+          <Link href={"/create-schedule"}>Lịch trình</Link>
+        </li>
+        <li
+          className={`nav-item ${
             pathname.includes("/policies") ? "active" : ""
           }`}
         >
           <Link href={"/policies"}>Chính sách</Link>
         </li>
-        {isAuthenticated && (
-          <li
-            className={`nav-item ${
-              pathname.includes("/create-schedule") ? "active" : ""
-            }`}
-          >
-            <Link href={"/create-schedule"}>Lịch trình</Link>
-          </li>
-        )}
       </ul>
       <div className="basis-[20%] flex items-center gap-4 justify-end max-lg:basis-3/4 relative">
         <button onClick={toggleChatBox}>

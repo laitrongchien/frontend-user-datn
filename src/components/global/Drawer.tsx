@@ -2,8 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { LuMenu } from "react-icons/lu";
 import { MdHomeFilled, MdPolicy, MdTour } from "react-icons/md";
-import { FaMotorcycle } from "react-icons/fa6";
-import { FaPencilAlt } from "react-icons/fa";
+import { FaMotorcycle, FaRoute } from "react-icons/fa6";
 import { useState } from "react";
 
 const Drawer = () => {
@@ -58,7 +57,7 @@ const Drawer = () => {
           >
             <Link href={"/tours"} className="flex items-center">
               <MdTour size={24} />
-              <h1 className="text-lg font-semibold ml-4">TOUR XE MOTOR</h1>
+              <h1 className="text-lg font-semibold ml-4">TOUR XE MÁY</h1>
             </Link>
           </li>
           <li
@@ -67,18 +66,18 @@ const Drawer = () => {
           >
             <Link href={"/motorbikes"} className="flex items-center">
               <FaMotorcycle size={24} />
-              <h1 className="text-lg font-semibold ml-4">XE MOTOR</h1>
+              <h1 className="text-lg font-semibold ml-4">THUÊ XE</h1>
             </Link>
           </li>
-          {/* <li
+          <li
             className="py-4 hover:bg-gray-200 rounded-lg"
             onClick={closeDrawer}
           >
-            <Link href={"/blogs"} className="flex items-center">
-              <FaPencilAlt size={20} />
-              <h1 className="text-lg font-semibold ml-5">BÀI VIẾT</h1>
+            <Link href={"/create-schedule"} className="flex items-center">
+              <FaRoute size={22} />
+              <h1 className="text-lg font-semibold ml-5">LỊCH TRÌNH</h1>
             </Link>
-          </li> */}
+          </li>
           <li
             className="py-4 hover:bg-gray-200 rounded-lg"
             onClick={closeDrawer}

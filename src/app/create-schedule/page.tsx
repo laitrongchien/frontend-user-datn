@@ -9,6 +9,7 @@ import { v4 as uuidv4 } from "uuid";
 import { tourService } from "@/services/api/tour";
 import { toast } from "react-toastify";
 import { motorbikeService } from "@/services/api/motorbike";
+import { useAppSelector } from "@/store/hooks";
 
 const CreateSchedule = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -20,6 +21,7 @@ const CreateSchedule = () => {
   const [distance, setDistance] = useState<number | null>(null);
   const [suggestMotorbikes, setSuggestMotorbikes] = useState([]);
   const motorbikeSectionRef = useRef<any>(null);
+  const { user } = useAppSelector((state) => state.auth);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -90,7 +92,7 @@ const CreateSchedule = () => {
           onSubmit={handleSubmit}
         >
           <h1 className="text-[20px] text-center font-semibold mb-4">
-            Gợi ý xe phù hợp với lịch trình của bạn
+            Tìm kiếm xe phù hợp với lịch trình của bạn
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 mt-2 pr-8">
             <div>
@@ -176,16 +178,18 @@ const CreateSchedule = () => {
                 !startLocation || !endLocation
                   ? "bg-gray-300"
                   : "border-primary text-primary"
-              } mr-4`}
+              }`}
             >
-              Gợi ý xe
+              Tìm kiếm xe
             </button>
-            <button
-              type="submit"
-              className="px-4 py-2 bg-primary rounded-lg text-white"
-            >
-              Lưu lịch trình
-            </button>
+            {user && (
+              <button
+                type="submit"
+                className="px-4 py-2 bg-primary rounded-lg text-white ml-4"
+              >
+                Lưu lịch trình
+              </button>
+            )}
           </div>
         </form>
         <div className="w-full md:w-[50%] flex-center h-[480px]">
