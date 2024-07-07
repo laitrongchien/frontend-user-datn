@@ -12,8 +12,13 @@ const getBookingTourByUser = async () => {
   return await axios.get("booking/get-user-booking-tour");
 };
 
+const cancelBookingTour = async (bookingId: string) => {
+  return await axios.put(`/booking/cancel-booking-tour/${bookingId}`);
+};
+
 export const bookingTourService = {
   createBookingTour,
   getBookingTourByUser,
   getBookingTourById,
+  cancelBookingTour,
 };

@@ -65,7 +65,7 @@ const RentalMotorbikes = () => {
                 ? "text-success"
                 : row?.status === "received"
                 ? "text-blue"
-                : row?.status === "not-received"
+                : row?.status === "not-received" || row?.status === "cancel"
                 ? "text-error"
                 : "text-primary"
             } font-semibold
@@ -77,6 +77,8 @@ const RentalMotorbikes = () => {
             ? "Đã nhận xe"
             : row?.status === "not-received"
             ? "Không nhận xe"
+            : row?.status === "cancel"
+            ? "Hủy đơn thuê"
             : "Chờ nhận xe"}
         </h1>
       ),

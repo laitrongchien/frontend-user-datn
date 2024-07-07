@@ -20,7 +20,7 @@ const RentMotorbikeForm = ({
   motorbikePrice: number;
 }) => {
   const [startDate, setStartDate] = useState(
-    new Date(Date.now() + 24 * 60 * 60 * 1000)
+    new Date(Date.now() + 2 * 24 * 60 * 60 * 1000)
   );
   const [finishDate, setFinishDate] = useState(
     new Date(startDate.getTime() + 24 * 60 * 60 * 1000)
@@ -97,8 +97,8 @@ const RentMotorbikeForm = ({
           <h1>Ngày nhận</h1>
           <DatePicker
             selected={startDate}
-            minDate={new Date(Date.now() + 24 * 60 * 60 * 1000)}
-            maxDate={new Date(Date.now() + 3 * 24 * 60 * 60 * 1000)}
+            minDate={new Date(Date.now() + 2 * 24 * 60 * 60 * 1000)}
+            maxDate={new Date(Date.now() + 4 * 24 * 60 * 60 * 1000)}
             dateFormat="dd/MM/yyyy"
             onChange={(date) => date && setStartDate(date)}
             wrapperClassName="border border-gray-200"

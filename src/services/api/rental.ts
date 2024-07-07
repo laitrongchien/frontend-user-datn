@@ -12,8 +12,13 @@ const getMotorbikeRentalDetail = async (rentalId: string) => {
   return await axios.get(`rental/get-rental-detail/${rentalId}`);
 };
 
+const cancelRentalOrder = async (rentalId: string) => {
+  return await axios.put(`rental/cancel-rental-order/${rentalId}`);
+};
+
 export const rentalService = {
   createRentalMotorbike,
   getMotorbikeRentalsByUser,
   getMotorbikeRentalDetail,
+  cancelRentalOrder,
 };
