@@ -134,4 +134,9 @@ export const faqs = [
     answer:
       "Chúng tôi cung cấp một số dụng cụ kèm theo để sửa nếu vấn đề nhẹ, nếu tình trạng phức tạp hãy gọi cho chúng tôi qua hotline để có thể sửa chữa lưu động với chi phí phù hợp",
   },
+  {
+    question: "Chính sách hủy đơn và hoàn tiền như thế nào ?",
+    answer:
+      "Thời gian tối đa để hủy đơn và có thể hoàn tiền là 24h kể từ thời điểm khách hàng thanh toán cho đơn đặt tour hoặc thuê xe. Khách hàng có thể hủy đơn trong phần chi tiết đơn đặt của khách hàng",
+  },
 ];
