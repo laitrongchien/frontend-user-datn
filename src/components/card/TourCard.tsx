@@ -34,7 +34,7 @@ const TourCard = ({ tour }: { tour: any }) => {
             </div>
           )}
         </div>
-        <div className="py-1 border-b border-gray-300">
+        <div className="py-1 border-b border-gray-300 min-h-[60px]">
           <Link href={`/tours/${tour._id}`} className="font-semibold">
             {tour.name}
           </Link>

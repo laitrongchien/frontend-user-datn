@@ -86,7 +86,7 @@ const CreateSchedule = () => {
 
   return (
     <>
-      <div className="px-6 md:px-10 py-6 flex max-md:flex-col-reverse gap-12">
+      <div className="px-6 md:px-10 py-6 flex max-md:flex-col-reverse gap-12 mb-8">
         <form
           className="w-full md:w-[50%] max-h-[480px] pt-2 pb-4 overflow-y-scroll overflow-x-hidden"
           onSubmit={handleSubmit}
