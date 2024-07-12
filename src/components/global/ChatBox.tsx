@@ -98,7 +98,7 @@ const Chatbox = ({ toggleChatBox }: { toggleChatBox: () => void }) => {
         </div>
       </div>
 
-      <div className="px-4 py-2 max-h-[420px] overflow-y-scroll">
+      <div className="px-4 py-2 max-h-[calc(100vh-190px)] overflow-y-scroll">
         {messages.length === 0 ? (
           <div className="flex flex-col items-center mt-8">
             <Image
